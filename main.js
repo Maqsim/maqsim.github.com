@@ -16,7 +16,7 @@ window.onload = function() {
             b = simple(this.parentNode.querySelector(".b").value),
             n = (!!this.parentNode.querySelector("#highAccuracy").checked)?100000:1000;
             fx = this.parentNode.querySelector(".fx").value;
-
+            
         this.parentNode.querySelector("span.result").innerHTML = round_mod(integral(fx, a, b, n), 8);
 
         return false;

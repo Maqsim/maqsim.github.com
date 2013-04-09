@@ -289,7 +289,7 @@ function Calculator(mode) {
                     break
                 case '±':
                     a = stack.pop();
-                    stack.push(parseFloat(-a));
+                    stack.push(-parseFloat(a));
                     break;
                 case '!':
                     a = stack.pop();
@@ -301,12 +301,9 @@ function Calculator(mode) {
         return stack.pop();
     }
 
-    var f = function(expression, x){
-        return parseFloat(calcRPN(toRPN(expression.replace(/\bx\b/g, x))));
-    }
+    var f = function(expression, x) {return parseFloat(calcRPN(toRPN(expression.replace(/\bx\b/g, x))))}
 
     var returnFunction;
-
     switch(mode) {
         case 'transcendental':
             returnFunction = function(expression, a, b, e) {
@@ -331,7 +328,7 @@ function Calculator(mode) {
                 return parseFloat(result);
             }
         break;
-        default: case '': case 'normal': returnFunction = function(expression) {return parseFloat(calcRPN(toRPN(expression)))}
+        default: case '': case 'normal': returnFunction = function(expression) {return parseFloat(calcRPN((typeof expression === 'string')?toRPN(expression):expression))}
     }
 
     return returnFunction;
