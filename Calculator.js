@@ -148,7 +148,6 @@ function Calculator(mode) {
             ret.push(stack.pop());
         }
 
-        console.log(ret);
         return ret;
     }
      
@@ -321,7 +320,6 @@ function Calculator(mode) {
                         fa = f(expression, a),
                         fb = f(expression, b);
 
-                        console.log(f0, a, b, fa, fb);
 
                     while(D <= dmax) {
                         D = D + d;
