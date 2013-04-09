@@ -24,7 +24,7 @@ function Calculator(mode) {
     var operators = {
         '(':{'priority':5},
         ')':{'priority':5},
-        '±':{'priority':4},
+        '±':{'priority':0},
         '!': {'priority':4},
         '^':{'priority':3},
         '*':{'priority':2},
@@ -71,7 +71,6 @@ function Calculator(mode) {
 
     var toRPN = function(str) {
         for (constant in constants) str = str.replace(new RegExp("\\b"+constant+"\\b","gi"), constants[constant]);
-
         var positions = [];
         var temp=[];
 
@@ -81,7 +80,7 @@ function Calculator(mode) {
         for (i = 0, lastIndex=0; i < str.length; i++) {
                if (positions.indexOf(i) !== -1) {
                     if (str.substr(lastIndex, i-lastIndex) !== '') temp.push(str.substr(lastIndex, i-lastIndex));
-                    temp.push(((temp[temp.length-1] == '(' || temp[temp.length-1] == 'undefined' || temp[temp.length-1] == null) && str[i] == '-')?'±':str.substr(i, 1));
+                    temp.push(((temp[temp.length-1] == '(' || temp[temp.length-1] == 'undefined' || temp[temp.length-1] == null || str[i-1] == ' ') && str[i] == '-')?'±':str.substr(i, 1));
                     lastIndex = i+1;
                }
            }; 
@@ -278,6 +277,7 @@ function Calculator(mode) {
                     b = stack.pop();
                     a = stack.pop();
                     stack.push(Math.pow(parseFloat(a), parseFloat(b)));
+                    break
                 case '±':
                     a = stack.pop();
                     stack.push(parseFloat(-a));
@@ -302,11 +302,8 @@ function Calculator(mode) {
         case 'transcendental':
             returnFunction = function(expression, a, b, e) {
                 e = e || 0.0001; 
-                var c,
-                    counter = 0;
-                
+                var c;
                 while (Math.abs(a - b) > e) {
-                    counter++;
                     c = (a + b) / 2;
                     if (f(expression, a) * f(expression, c) < 0) b = c;
                     else a = c;
@@ -321,7 +318,7 @@ function Calculator(mode) {
                 n = n || 1000;
                 var t,j;
                 var result=0;
-                for(j = 1; j <= n; j++) result = result + (f(expression, a+(b-a)/n*j) * (b-a)/n);
+                for(j = 1; j <= n; j++) result = result + (f(expression, "("+parseFloat(a+(b-a)/n*j)+")") * (b-a)/n);
                 return parseFloat(result);
             }
         break;
