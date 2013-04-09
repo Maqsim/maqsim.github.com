@@ -46,6 +46,12 @@
 				padding-bottom: 1px;
 			}
 
+			h4 {
+				margin: 0;
+				padding: 0;
+				color: #444;
+			}
+
 			input[type='text'] {
 				font-size: 11px;
 				padding: 3px 5px;
@@ -99,6 +105,11 @@
 
 			ul li {
 				margin-top: 4px;
+			}
+
+			.modal ul {
+				margin-bottom: 20px;
+				color: #555;
 			}
 
 			#graph input.fx {
@@ -282,7 +293,7 @@
 
 			<div id="graph" class="block">
 				<form action="">
-					<h3>Графік функції</h3>
+					<h3>Графік функції (в розробці)</h3>
 					<input type="text" size="32" placeholder="F(x)" class="fx"><span class="result"></span>
 					<input type="text" style="width: 25px;" placeholder="a" class="a"> <input type="text" style="width: 25px;" placeholder="b" class="b">
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
@@ -304,7 +315,7 @@
 					<input type="text" style="width: 20px;" required placeholder="b" class="b"><br>
 					<img style="margin-bottom: -14px; height: 35px" src="integral.png" alt="integral"><input type="text" required size="30" placeholder="F(x)" class="fx"> dx = <span class="result"></span><br>
 					<input type="text" required style="margin-top: 8px; width: 20px;" placeholder="a" class="a">
-					<input id="highAccuracy" type="checkbox"><label for="highAccuracy">Надточне обчислювання</label>
+					<input id="highAccuracy" type="checkbox"><label for="highAccuracy">Надточне обчислення</label>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				</form>
 			</div>
@@ -314,8 +325,81 @@
 		</div>
 		<aside id="instruction" class="modal">
 		    <div>
+		    	<h3>Замітки</h3>
+		        <p>
+		        	<ul>
+		        		<li>Enter - розрахунок, якщо фокус встановлено в одне із полів</li>
+						<li>В блоці "Трансцендентне рівняння" параметр "e"(точність) допускається не вводити. За замовчуванням e = 0.001</li>
+						<li>"Надточне обчислення" дає змогу отримати більш точний результат, але потребує більше ресурсів та часу</li>
+					</ul>
+		        </p>
+
 		        <h3>Підтримувані функції калькулятора</h3>
-		        <p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p>
+		        <p>
+		        	<h4>Константи</h4>
+		        	<ul>
+		        		<li>e - основа натурального логарифма з наближеним числовим значенням 2.71828....</li>
+						<li>pi - число, що має значення 3.14159 ... і рівне відношенню довжини кола до його діаметру</li>
+						<li>i - представляє уявну одиницю, sqrt (-1)</li>
+						<li>Degree - число радіан в одному градусі, яке має числове значення pi/180</li>
+						<li>EulerGamma - постійна Ейлера з числовим значенням 0.577216 ....</li>
+						<li>GoldenRatio - константа зі значенням (1 + sqrt (5)) / 2, визначаюча поділ відрізка за правилом золотого перетину</li>
+		        	</ul>
+		        	
+					<h4>Елементарні функції</h4>
+		        	<ul>
+						<li>abs(x) - модуль значення x, |x|</li>
+						<li>sqrt(x) - квадратний корінь значення x, √x</li>
+						<li>x^y - x в степені y</li>
+						<li>exp(x) - экспонента значення x, e^x</li>
+						<li>a logb - логарифм значення b за основою a, Log(a,b)</li>
+						<li>ln x - натуральний логарифм значення x, Log(e,x)</li>
+						<li>n! - факторіал числа n</li>
+					</ul>
+
+					<h4>Тригонометричні функції</h4>
+		        	<ul>
+						<li>sin(x) - синус значення x</li>
+						<li>cos(x) - косинус значення x</li>
+						<li>tan(x) - тангенс значення x </li>
+						<li>cot(x) - котангенс значення x </li>
+						<li>sec(x) - секанс значення x, sec(x)=1/cos(x) </li>
+						<li>csc(x) - косеканс значення x, csc(x)=1/sin(x)</li>
+					</ul>
+
+					<h4>Зворотні тригонометричні функції</h4>
+		        	<ul>
+						<li>sinh(x) - синус гіперболічний значення x</li>
+						<li>cosh(x) - косинус гіперболічний значення x</li>
+						<li>tanh(x) - тангенс гіперболічний значення x</li>
+						<li>coth(x) - котангенc гіперболічний значення x</li>
+						<li>sech(x) - секанс гіперболічний значення x</li>
+						<li>csch(x) - косеканс гіперболічний значення x</li>
+					</ul>
+
+					<h4>Гіперболічні функції</h4>
+		        	<ul>
+						<li>arcsinh(x) - арксинус гіперболічний значення x</li>
+						<li>arccosh(x) - арккосинус гіперболічний значення x</li>
+						<li>arctanh(x) - арктангенс гіперболічний значення x</li>
+						<li>arccoth(x) - арккотангенc гіперболічний значення x</li>
+						<li>arcsech(x) - арксеканс гіперболічний значення x</li>
+						<li>arccsch(x) - арккосеканс гіперболічний значення x</li>
+					</ul>
+
+					Ведуться роботи над доповненням списку операторів. Серед них:
+					<ul>
+						<li>Функції комплексного аргументу</li>
+						<li>Ортогональні многочлени</li>
+						<li>Интегральні показові і споріднені їм функції</li>
+						<li>Гамма- і полігамма-функці</li>
+						<li>Бета-функція і споріднені їй функції</li>
+						<li>Функції Бесселя</li>
+						<li>Гіпергеометричні функції</li>
+						<li>Еліптичні інтеграли</li>
+						<li>Еліптичні функції</li>
+					</ul>
+		    	</p>
 		        <a href="#close" title="Close">Close</a>
 		    </div>
 		</aside>
@@ -325,7 +409,9 @@
 		        <p><ul>
 		        	<li><a href="http://vk.com/kaleid05cope">ВКонтакте</a></li>
 		        	<li><a href="https://github.com/Maqsim">GitHub</a></li>
-		        </ul></p>
+		        </ul>
+				2013 © Max Max, KNUTD
+		    	</p>
 		        <a href="#close" title="Close">Close</a>
 		    </div>
 		</aside>
