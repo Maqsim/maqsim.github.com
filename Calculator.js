@@ -24,38 +24,38 @@ function Calculator(mode) {
     var operators = {
         '(':{'priority':5},
         ')':{'priority':5},
-        '±':{'priority':0},
+        '±':{'priority':3, 'left': true},
         '!': {'priority':4},
         '^':{'priority':3},
         '*':{'priority':2},
         '/':{'priority':2},
         '+':{'priority':1},
         '-':{'priority':1},
-        'abs':{'priority':3},
-        'exp':{'priority':3},
-        'sin':{'priority':3},
-        'cos':{'priority':3},
-        'tg':{'priority':3},
-        'ctg':{'priority':3},
-        'arcsin':{'priority':3},
-        'arccos':{'priority':3},
-        'arctg':{'priority':3},
-        'arcctg':{'priority':3},
-        'arcsec':{'priority':3},
-        'arccsc':{'priority':3},
-        'sec':{'priority':3},
-        'csc':{'priority':3},
+        'abs':{'priority':3, 'left': true},
+        'exp':{'priority':3, 'left': true},
+        'sin':{'priority':3, 'left': true},
+        'cos':{'priority':3, 'left': true},
+        'tg':{'priority':3, 'left': true},
+        'ctg':{'priority':3, 'left': true},
+        'arcsin':{'priority':3, 'left': true},
+        'arccos':{'priority':3, 'left': true},
+        'arctg':{'priority':3, 'left': true},
+        'arcctg':{'priority':3, 'left': true},
+        'arcsec':{'priority':3, 'left': true},
+        'arccsc':{'priority':3, 'left': true},
+        'sec':{'priority':3, 'left': true},
+        'csc':{'priority':3, 'left': true},
         //asfsaf
-        'sinh':{'priority':3},
-        'cosh':{'priority':3},
-        'tanh':{'priority':3},
-        'cth':{'priority':3},
-        'sech':{'priority':3},
-        'csch':{'priority':3},
+        'sinh':{'priority':3, 'left': true},
+        'cosh':{'priority':3, 'left': true},
+        'tanh':{'priority':3, 'left': true},
+        'cth':{'priority':3, 'left': true},
+        'sech':{'priority':3, 'left': true},
+        'csch':{'priority':3, 'left': true},
 
-        'sqrt':{'priority':3},
-        'ln':{'priority':3},
-        'log':{'priority':3}
+        'sqrt':{'priority':3, 'left': true},
+        'ln':{'priority':3, 'left': true},
+        'log':{'priority':3, 'left': true}
     };
 
     var constants = {
@@ -80,7 +80,7 @@ function Calculator(mode) {
         for (i = 0, lastIndex=0; i < str.length; i++) {
                if (positions.indexOf(i) !== -1) {
                     if (str.substr(lastIndex, i-lastIndex) !== '') temp.push(str.substr(lastIndex, i-lastIndex));
-                    temp.push(((temp[temp.length-1] == '(' || temp[temp.length-1] == 'undefined' || temp[temp.length-1] == null || str[i-1] == ' ') && str[i] == '-')?'±':str.substr(i, 1));
+                    temp.push(((temp[temp.length-1] == '(' || temp[temp.length-1] == 'undefined' || temp[temp.length-1] == null) && str[i] == '-')?'±':str.substr(i, 1));
                     lastIndex = i+1;
                }
            }; 
@@ -94,6 +94,7 @@ function Calculator(mode) {
         for(ind in str) {
             //читаем очередной символ
             var ch = str[ind];
+            console.log('ch: ', ch);
             if(ch == ' ') {
                 if(token.length > 0)
                     ret.push(token);
@@ -103,41 +104,64 @@ function Calculator(mode) {
             }
      
             if(ch in operators) {
-                
                 if(token.length > 0)
                     ret.push(token);
-     
+
                 token = '';
                 if(ch == ')') {
                     var t = '';
-                    while( (t=stack.pop()) != '(' ) {
+                    var c = 0;
+                    while( (t=stack.pop()) != '(') {
+                        c++;
+                        console.log('pop '+t+' from stack to output to "("');
                         ret.push(t);
+                        if(c > 50) break;
                     }
                 }
                 else {
                     var t = stack[stack.length - 1];
-                    if(t != 'undefined' && t != null) {
-                        if ( t != '(' && (operators[t].priority > operators[ch].priority)) {
+                    if(t != undefined && t != null) {
+                        console.error(t+' = '+operators[t].priority);
+                        console.error(ch+' = '+operators[ch].priority);
+                        if ( t != '(' && ((operators[t].priority > operators[ch].priority) || operators[ch].left)) {
                             for(;;) {
                                 t = stack[stack.length - 1];
-                                if(t == undefined || t == null || operators[t].priority <= operators[ch].priority)
+                                if(t == undefined || t == null || operators[t].priority <= operators[ch].priority || t == '(')
                                     break;
+
                                 t = stack.pop();
                                 ret.push(t);
+                                console.log('pop '+t+' from stack to output');
                             }
-                        } else if(t!='(' && (operators[t].priority >= operators[ch].priority)) ret.push(stack.pop());
+                        } else if(t!='(' && (operators[t].priority == operators[ch].priority)) {
+                            console.error(t+' = '+operators[t].priority);
+                            console.error(ch+' = '+operators[ch].priority);
+                            t = stack.pop();
+                            ret.push(t);
+                            console.log('pop '+t+' from stack to output');
+                        }
                     }
                     stack.push(ch);
+                    console.log('push '+ch+' to stack');
+                    console.log('stack: ', stack);
                 }
-            } 
-            else token += str[ind];
+            } else {
+                token += str[ind];
+                console.log('token: ', token);
+                console.log('ret: ', ret.join(' '));
+            }
+            console.log('-----------------------------------------------------------------------------');
         }
      
         if(token.length > 0)
             ret.push(token);
      
-        while(stack.length!=0)
+        console.log('push all from stack', stack);
+
+        while(stack.length!=0) {
             ret.push(stack.pop());
+        }
+            
 
         console.log(ret);
         return ret;
