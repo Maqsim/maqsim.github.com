@@ -355,7 +355,7 @@ function Calculator(mode) {
                 n = n || 1000;
                 var t,j;
                 var result=0;
-                for(j = 1; j <= n; j++) result = result + (f(expression, "("+parseFloat(a+(b-a)/n*j)+")") * (b-a)/n);
+                for(j = 1; j <= n; j++) result = result + (f(expression, parseFloat(a+(b-a)/n*j)) * (b-a)/n);
                 return parseFloat(result);
             }
         break;
