@@ -122,7 +122,7 @@ function Calculator(mode) {
                         if ( t != '(' && ((operators[t].priority > operators[ch].priority) || operators[ch].left)) {
                             for(;;) {
                                 t = stack[stack.length - 1];
-                                if(t == undefined || t == null || operators[t].priority <= operators[ch].priority || t == '(')
+                                if(t == undefined || t == null || operators[t].priority < operators[ch].priority || t == '(')
                                     break;
 
                                 t = stack.pop();
@@ -147,8 +147,8 @@ function Calculator(mode) {
         while(stack.length!=0) {
             ret.push(stack.pop());
         }
-            
 
+        console.log(ret);
         return ret;
     }
      
@@ -301,7 +301,7 @@ function Calculator(mode) {
         return stack.pop();
     }
 
-    var f = function(expression, x) {return parseFloat(calcRPN(toRPN(expression.replace(/\bx\b/g, x))))}
+    var f = function(expression, x) {return parseFloat(calcRPN(toRPN(expression.replace(/\bx\b/g, "("+parseFloat(x)+")"))))}
 
     var returnFunction;
     switch(mode) {
@@ -309,9 +309,42 @@ function Calculator(mode) {
             returnFunction = function(expression, a, b, e) {
                 e = e || 0.0001; 
                 var c;
-                while (Math.abs(a - b) > e) {
+
+                if(!parseFloat(a) || !parseFloat(b)) {
+                    var dmax = 100;
+                        d = 0.01,
+                        x0 = 0,
+                        f0 = f(expression, x0),
+                        D = d,
+                        a = x0 - D,
+                        b = x0 + D,
+                        fa = f(expression, a),
+                        fb = f(expression, b);
+
+                        console.log(f0, a, b, fa, fb);
+
+                    while(D <= dmax) {
+                        D = D + d;
+                        if (f0 >= 0) {
+                            if (fa < 0) {b = x0; break}
+                            if (fb < 0) {a = x0; break}
+
+                            if(fa> fb) {a=x0; x0=b; b+=D; fa=f0; f0=fb; fb=f(expression, b);}
+                            else if(fa<fb) {b=x0; x0=a; a-=D; fb=f0; f0=fa; fa=f(expression, b);}
+                            else {a-=D; b+=D; fa=f(expression, a);fb=f(expression, b);}
+                        } else {
+                            if(fa>=0) {b=x0;break;}
+                            else if(fb>=0) {a=x0;break;}
+                            if(fa<fb) {a=x0; x0=(b); b+=D; fa=f0; f0=fb; fb=f(expression, b);}
+                            else if(fa>fb) {b=x0; x0=(a); a-=D; fb=f0; f0=fa; fa=f(expression, a);}
+                            else {a-=D; b+=D; fa=f(expression, a);fb=f(expression, b);}
+                        }
+                    }
+                }
+
+                while (Math.abs(b - a) > e) {
                     c = (a + b) / 2;
-                    if (f(expression, a) * f(expression, c) < 0) b = c;
+                    if (f(expression, a) * f(expression, c) <= 0) b = c;
                     else a = c;
                 }
 
