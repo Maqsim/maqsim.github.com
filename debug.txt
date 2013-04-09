@@ -94,6 +94,7 @@ function Calculator(mode) {
         for(ind in str) {
             //читаем очередной символ
             var ch = str[ind];
+            console.log('ch: ', ch);
             if(ch == ' ') {
                 if(token.length > 0)
                     ret.push(token);
@@ -112,6 +113,7 @@ function Calculator(mode) {
                     var c = 0;
                     while( (t=stack.pop()) != '(') {
                         c++;
+                        console.log('pop '+t+' from stack to output to "("');
                         ret.push(t);
                         if(c > 50) break;
                     }
@@ -119,6 +121,8 @@ function Calculator(mode) {
                 else {
                     var t = stack[stack.length - 1];
                     if(t != undefined && t != null) {
+                        console.error(t+' = '+operators[t].priority);
+                        console.error(ch+' = '+operators[ch].priority);
                         if ( t != '(' && ((operators[t].priority > operators[ch].priority) || operators[ch].left)) {
                             for(;;) {
                                 t = stack[stack.length - 1];
@@ -127,28 +131,39 @@ function Calculator(mode) {
 
                                 t = stack.pop();
                                 ret.push(t);
+                                console.log('pop '+t+' from stack to output');
                             }
                         } else if(t!='(' && (operators[t].priority == operators[ch].priority)) {
+                            console.error(t+' = '+operators[t].priority);
+                            console.error(ch+' = '+operators[ch].priority);
                             t = stack.pop();
                             ret.push(t);
+                            console.log('pop '+t+' from stack to output');
                         }
                     }
                     stack.push(ch);
+                    console.log('push '+ch+' to stack');
+                    console.log('stack: ', stack);
                 }
             } else {
                 token += str[ind];
+                console.log('token: ', token);
+                console.log('ret: ', ret.join(' '));
             }
+            console.log('-----------------------------------------------------------------------------');
         }
      
         if(token.length > 0)
             ret.push(token);
      
+        console.log('push all from stack', stack);
 
         while(stack.length!=0) {
             ret.push(stack.pop());
         }
             
 
+        console.log(ret);
         return ret;
     }
      
