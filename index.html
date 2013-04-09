@@ -1,34 +1,333 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link href="favicon.png" rel="shortcut icon" type="image/x-icon"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Divers and stars</title>
-    </head>
-    <body>
-    </body>
-<script type="text/javascript" src="sources/Diver.class.js"></script>
-<script type="text/javascript" src="sources/Star.class.js"></script>
-<script type="text/javascript" src="sources/core.js"></script>
-<script>
+	<head>
+		<meta charset="utf-8">
+		<title>Диплом</title>
+		<script src="Calculator.js" type="text/javascript"></script>
+		<script src="main.js" type="text/javascript"></script>
 
-	var objects = [],
-		starsOnShip = [],
-		starsCount = 0,
-		diversCount = 0,
-		isCompressorBusy = false;
-		
-	application.init();
-	
-	config = {
-		fps: 1000 / 30, //60 fps
-		cablePosition: canvas.width - 130, //позиция троса
-		diverSpeed: 20, //px per second
-		balon: 20000, //максимальный обьем балона водолаза (мл)
-		fillingSpeed: 3000, //скорость заправки балона (мл/сек)
-		skyHeigth: Math.round(canvas.height / 6), //высота неба (1/6)
-		bottomHeight: 50, // Высота дна
-		maxStarsOnHands: 2, // максимальное кол-во звезд в руках водолаза
-	}
-</script>
+		<style>
+			body {
+				font-family: Tahoma;
+				font-size: 11px;
+				background: url('bg.png') repeat;
+				margin: 0;
+			}
+			
+			a, a:visited {
+				color: #435a73;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			#main {
+				width: 400px;
+				margin: 0 auto;
+				background-color: #fff;
+				padding: 15px;
+				-webkit-box-shadow: 0 0 40px #000;
+				-moz-box-shadow: 0 0 40px #000;
+				box-shadow: 0 0 40px #000;
+			}
+
+			#main > .block {
+				margin-bottom: 20px;
+			}
+
+			h3 {
+				margin: 0;
+				color: #45688E;
+				font-size: 11px;
+				margin-bottom: 6px;
+				border-bottom: 1px solid #DAE1E8;
+				padding-bottom: 1px;
+			}
+
+			input[type='text'] {
+				font-size: 11px;
+				padding: 3px 5px;
+				border: 1px solid #DAE1E8;
+				margin: 2px 0;
+
+				-webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+
+				-webkit-transition: all .2s;
+			    -moz-transition: all .2s;
+			    -ms-transition: all .2s;
+			    -o-transition: all .2s;
+			    transition: all .2s;
+			}
+
+			input[type='text']:focus {
+				outline: none;
+				border-color: #000;
+			}
+
+			input[type="checkbox"] {
+			    position: absolute;
+			    left: -9999px;
+			}
+
+			input[type="checkbox"] + label {
+			    background: url(sprite3.png) 0 -1px no-repeat;
+				height: 15px;
+			    padding-left: 20px;
+			    margin: 7px 0;
+			    cursor: pointer;
+				-webkit-transition: all .2s;
+			    -moz-transition: all .2s;
+			    -ms-transition: all .2s;
+			    -o-transition: all .2s;
+			    transition: all .2s;
+			}
+			 
+			input[type="checkbox"]:checked + label {
+			    background-position: 0 -33px;
+			}
+
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: square inside;
+				color: #45688E;
+			}
+
+			ul li {
+				margin-top: 4px;
+			}
+
+			#graph input.fx {
+				width: 341px
+			}
+
+			div#footer a {
+				text-align: center;
+				font-size: 13px;
+				display: block;
+				width: 400px;
+				padding: 15px;
+				margin-left: -15px;
+				margin-bottom: -5px;
+				background-color: #eaeaea;
+				color:#555;
+				text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				-webkit-transition: all .2s;
+			    -moz-transition: all .2s;
+			    -ms-transition: all .2s;
+			    -o-transition: all .2s;
+			    transition: all .2s;
+			}
+
+			div#footer a:hover {
+				color: #fff;
+				background-color: #6b8db2;
+				border-top: 1px solid #4d6e91;
+				border-bottom: 1px solid #4d6e91;
+				text-shadow: none;
+			}
+
+/* Container */
+.modal {
+	z-index: -2;
+    /* Overlay page content */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+
+    /* Transition opacity on open */
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+
+    /* Hide for now */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Show modal */
+.modal:target {
+	visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    /* at time of writing (Feb 2012), pointer-events not supported by Opera or IE */
+}
+
+/* Content */
+.modal > div {
+    width: 500px;
+    height: 70%;
+    overflow: auto;
+    background: #fff;
+    position: relative;
+    margin: 5% auto;
+
+    /* Default minimise animation */
+    -webkit-animation: minimise 400ms linear;
+    -moz-animation: minimise 400ms linear;
+
+    /* Prettify */
+    padding: 15px;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    background: #fff;
+}
+
+/* Override animation on modal open */
+.modal:target > div {
+    -webkit-animation-name: bounce;
+    -moz-animation-name: bounce;
+}
+
+.modal h2 {
+    font-size: 36px;
+    padding: 0 0 20px;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: scale3d(0.1,0.1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+  55% {
+    -webkit-transform: scale3d(1.08,1.08,1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+  }
+  75% {
+    -webkit-transform: scale3d(0.95,0.95,1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  100% {
+    -webkit-transform: scale3d(1,1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+}
+
+@-moz-keyframes bounce {
+  0% {
+    -moz-transform: scale3d(0.1,0.1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+  55% {
+    -moz-transform: scale3d(1.08,1.08,1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+  }
+  75% {
+    -moz-transform: scale3d(0.95,0.95,1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  100% {
+    -moz-transform: scale3d(1,1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+}
+
+/* Modal close link */
+.modal a[href="#close"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: transparent;
+}
+
+/* Reset native styles */
+.modal a[href="#close"]:focus {
+    outline: none;
+}
+
+/* Create close button */
+.modal a[href="#close"]:after {
+    content: 'close';
+    display: block;
+    font-size: 11px;
+
+    /* Position */
+    position: absolute;
+    right: 10px;
+    top: 5px;
+
+    /* Style */
+    text-decoration: none;
+    text-shadow: none;
+    text-align: center;
+    color: #888;
+}
+
+
+.modal a[href="#close"]:focus:after {
+    outline: none;
+    color: #000;
+}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="help" class="block">
+				<h3>Теорія</h3>
+				<ul>
+					<li><a href="synopsis.doc">Конспект лекцій з дисципліни "Спеціальна дисципліна з напрямку випускної роботи"</a></li>
+					<li><a href="#instruction">Інструкція</a></li>
+				</ul>
+			</div>
+
+			<div id="graph" class="block">
+				<form action="">
+					<h3>Графік функції</h3>
+					<input type="text" size="32" placeholder="F(x)" class="fx"><span class="result"></span>
+					<input type="text" style="width: 25px;" placeholder="a" class="a"> <input type="text" style="width: 25px;" placeholder="b" class="b">
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+				</form>
+			</div>
+
+			<div id="transcendental" class="block">
+				<form action="">
+					<h3>Трансцендентне рівняння</h3>
+					<input type="text" size="32" placeholder="F(x)" class="fx" required> = <span class="result"></span><br>
+					<input type="text" style="width: 25px;" placeholder="a" class="a" required> <input type="text" style="width: 25px;" placeholder="b" required class="b"> <input type="text" style="width: 35px;" placeholder="e" class="e">
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+				</form>
+			</div>
+
+			<div id="integral" class="block">
+				<form action="">
+					<h3>Визначений інтеграл</h3>
+					<input type="text" style="width: 20px;" required placeholder="b" class="b"><br>
+					<img style="margin-bottom: -14px; height: 35px" src="integral.png" alt="integral"><input type="text" required size="30" placeholder="F(x)" class="fx"> dx = <span class="result"></span><br>
+					<input type="text" required style="margin-top: 8px; width: 20px;" placeholder="a" class="a">
+					<input id="highAccuracy" type="checkbox"><label for="highAccuracy">Надточне обчислювання</label>
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+				</form>
+			</div>
+			<div id="footer">
+				<a href="#about">Максим Дяченко</a>
+			</div>
+		</div>
+		<aside id="instruction" class="modal">
+		    <div>
+		        <h3>Підтримувані функції калькулятора</h3>
+		        <p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p><p>The modal animation is hardware accelerated where supported, on other browsers the animation may be more sluggish.</p>
+		        <a href="#close" title="Close">Close</a>
+		    </div>
+		</aside>
+		<aside id="about" class="modal">
+		    <div>
+		        <h3>Контакти</h3>
+		        <p><ul>
+		        	<li><a href="http://vk.com/kaleid05cope">ВКонтакте</a></li>
+		        	<li><a href="https://github.com/Maqsim">GitHub</a></li>
+		        </ul></p>
+		        <a href="#close" title="Close">Close</a>
+		    </div>
+		</aside>
+	</body>
 </html>
