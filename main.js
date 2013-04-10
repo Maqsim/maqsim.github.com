@@ -16,7 +16,7 @@ window.onload = function() {
             b = simple(this.parentNode.querySelector(".b").value),
             n = (!!this.parentNode.querySelector("#highAccuracy").checked)?100000:1000;
             fx = this.parentNode.querySelector(".fx").value;
-            
+
         this.parentNode.querySelector("span.result").innerHTML = round_mod(integral(fx, a, b, n), 8);
 
         return false;
@@ -25,9 +25,10 @@ window.onload = function() {
     document.querySelector("#transcendental form").onsubmit = function() {
         var a = simple(this.parentNode.querySelector(".a").value),
             b = simple(this.parentNode.querySelector(".b").value),
+            e = simple(this.parentNode.querySelector(".e").value),
             fx = this.parentNode.querySelector(".fx").value;
 
-        this.parentNode.querySelector("span.result").innerHTML = round_mod(transcendental(fx, a, b), 8);
+        this.parentNode.querySelector("span.result").innerHTML = round_mod(transcendental(fx, a, b, e), 8);
 
         return false;
     }
