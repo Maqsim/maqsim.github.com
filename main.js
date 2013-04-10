@@ -29,8 +29,6 @@ window.onload = function() {
             e = simple(this.parentNode.querySelector(".e").value),
             fx = this.parentNode.querySelector(".fx").value;
 
-        //draw(fx);
-
         var result = round_mod(transcendental(fx, a, b), 8);
         this.parentNode.querySelector("span.result").innerHTML = result;
         this.parentNode.querySelector('a.graph').style.display = (!isNaN(result) && typeof result === 'number')?'block':'none'; 
@@ -40,7 +38,6 @@ window.onload = function() {
 
     document.querySelector("#graph form").onsubmit = function() {
         var fx = this.parentNode.querySelector(".fx").value;
-        alert();
         if (fx.length>0) draw(fx); 
         return false;
     }
