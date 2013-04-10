@@ -291,12 +291,22 @@
 				</ul>
 			</div>
 
+			<div id="graph" class="block">
+				<form action="">
+					<h3>Графік функції</h3>
+					<input type="text" style="width: 100%" placeholder="F(x)" class="fx" required>
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+				</form>
+				<canvas style="margin-top: 10px"></canvas>
+			</div>
+
 			<div id="transcendental" class="block">
 				<form action="">
 					<h3>Трансцендентне рівняння</h3>
 					<input type="text" size="42" placeholder="F(x)" class="fx" required> = <span class="result"></span><br>
-					<input type="text" style="width: 40px;" placeholder="a" class="a"> <input type="text" style="width: 40px;" placeholder="b" class="b"> <input type="text" style="width: 40px;" placeholder="e" class="e"> <span> — необов'язкові поля</span>
+					<input type="text" style="width: 40px;" placeholder="a" class="a"> <input type="text" style="width: 40px;" placeholder="b" class="b"> <input type="text" style="width: 40px;" placeholder="e" class="e"> <span style="color: #777"> — необов'язкові поля</span>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+					<a style="display: none; padding: 30px; padding-bottom: 20px; text-align: center;" href="#" class="graph">Побудувати графік</a>
 				</form>
 			</div>
 
