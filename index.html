@@ -13,7 +13,7 @@
 				background: url('bg.png') repeat;
 				margin: 0;
 			}
-			
+
 			a, a:visited {
 				color: #435a73;
 				text-decoration: none;
@@ -91,7 +91,7 @@
 			    -o-transition: all .2s;
 			    transition: all .2s;
 			}
-			 
+
 			input[type="checkbox"]:checked + label {
 			    background-position: 0 -33px;
 			}
@@ -114,6 +114,13 @@
 
 			#graph input.fx {
 				width: 341px
+			}
+
+			#transcendental span.result {
+				font-family: Georgia;
+				font-size: 16px;
+				margin-top: 10px;
+				display: block;
 			}
 
 			div#footer a {
@@ -283,32 +290,45 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="help" class="block">
+			<div id="help" class="block" style="display:none">
 				<h3>Теорія</h3>
 				<ul>
 					<li><a href="synopsis.doc">Конспект лекцій з дисципліни "Спеціальна дисципліна з напрямку випускної роботи"</a></li>
 					<li><a href="#instruction">Інструкція</a></li>
 				</ul>
 			</div>
-
-			<div id="graph" class="block">
+			<div id="transcendental" class="block">
 				<form action="">
-					<h3>Графік функції</h3>
+					<input type="text" style="width: 100%" placeholder="F(x)" class="fx" required autofocus>
+					<!--<input type="text" style="width: 40px;" placeholder="a" class="a"> <input type="text" style="width: 40px;" placeholder="b" class="b"> <input type="text" style="width: 40px;" placeholder="e" class="e"> <span style="color: #777"> — необов'язкові поля</span>-->
+					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+				</form>
+				<canvas id="graph" style="margin-top: 10px"></canvas>
+				<span class="result"></span>
+			</div>
+			<!--<div id="graph" class="block">
+				<form action="">
 					<input type="text" style="width: 100%" placeholder="F(x)" class="fx" required>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				</form>
-				<canvas style="margin-top: 10px"></canvas>
-			</div>
 
-			<div id="transcendental" class="block">
+			</div>-->
+
+			<div id="transcendental2" class="block">
 				<form action="">
 					<h3>Трансцендентне рівняння</h3>
-					<input type="text" size="42" placeholder="F(x)" class="fx" required> = <span class="result"></span><br>
-					<input type="text" style="width: 40px;" placeholder="a" class="a"> <input type="text" style="width: 40px;" placeholder="b" class="b"> <input type="text" style="width: 40px;" placeholder="e" class="e"> <span style="color: #777"> — необов'язкові поля</span>
+					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx1" required value="sin x1 - x2^x3"><br>
+					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx2" required value="x1 - cos x2 + x3"><br>
+					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx3" required value="arccos x2"><br>
+
+					<input type="text" style="width: 40px;" placeholder="x1" class="x1" required value="1">
+					<input type="text" style="width: 40px;" placeholder="x2" required class="x2" value="1">
+					<input type="text" style="width: 40px;" placeholder="x3" required class="x3" value="2"> <span style="color: #777"> — початкові наближення</span>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
-					<a style="display: none; padding: 30px; padding-bottom: 20px; text-align: center;" href="#" class="graph">Побудувати графік</a>
 				</form>
+				<span class="result"></span>
 			</div>
+
 
 			<div id="integral" class="block">
 				<form action="">
@@ -348,7 +368,7 @@
 						<li>EulerGamma — постійна Ейлера з числовим значенням 0.577216...</li>
 						<li>GoldenRatio — константа зі значенням (1 + sqrt (5)) / 2, визначаюча поділ відрізка за правилом золотого перетину</li>
 		        	</ul>
-		        	
+
 					<h4>Елементарні функції</h4>
 		        	<ul>
 						<li>abs(x) — модуль значення x, |x|</li>

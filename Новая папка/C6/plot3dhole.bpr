@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="plot3dhole.exe"/>
+    <OBJFILES value="plot3dhole.obj mainfrm.obj"/>
+    <RESFILES value="plot3dhole.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) mainfrm.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="sdlbasepack_rt_101C6.lib sdlmathpack_rt_101C6.lib sdlchartpack_rt_101C6.lib 
+      visualclx.lib rtl.lib vclx.lib sdlbasepack_101C6.lib sdlmathpack_101C6.lib 
+      sdlchartpack_101C6.lib vcl.lib"/>
+    <SPARELIBS value="vcl.lib sdlchartpack_101C6.lib sdlmathpack_101C6.lib sdlbasepack_101C6.lib 
+      vclx.lib rtl.lib visualclx.lib sdlchartpack_rt_101C6.lib 
+      sdlmathpack_rt_101C6.lib sdlbasepack_rt_101C6.lib"/>
+    <PACKAGES value="vcl.bpi vclx.bpi bcbsmp.bpi vcldb.bpi vclado60.bpi ibsmp60.bpi 
+      VCLBDE60.bpi vcldbx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi dss.bpi 
+      teeqr.bpi VCLIB60.bpi Vclmid60.bpi vclie.bpi Inetdb60.bpi Inet60.bpi 
+      NMFast60.bpi webmid60.bpi bcbie60.bpi dclocx60.bpi bcb2kaxserver60.bpi 
+      sdlbasepack_101C6.bpi sdlmathpack_101C6.bpi sdlchempack_101C6.bpi 
+      sdlguipack_101C6.bpi sdlchartpack_101C6.bpi sdlgeopack_101C6.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT"/>
+    <MAINSOURCE value="plot3dhole.cpp"/>
+    <INCLUDEPATH value="$(BCB)\lib\SDL\C6;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\lib\SDL\C6;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\lib\SDL\C6 -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp 
+      -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=d:\CBUILD~2\lib\vcl.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
+      -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="plot3dhole.cpp" FORMNAME="" UNITNAME="plot3dhole" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="plot3dhole.res" FORMNAME="" UNITNAME="plot3dhole" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="mainfrm.cpp" FORMNAME="Form1" UNITNAME="mainfrm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=3079
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=$(BCB)\lib\SDL\C6;$(BCB)\include;$(BCB)\include\vcl;
+Item1=$(BCB)\include;$(BCB)\include\vcl;
+Item2=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=$(BCB)\lib\SDL\C6;$(BCB)\lib\obj;$(BCB)\lib
+Item1=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+  </IDEOPTIONS>
+</PROJECT>

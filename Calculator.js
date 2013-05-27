@@ -3,14 +3,14 @@ function factorial(n) {return (n!=1) ? n*factorial(n-1) : 1;}
 function sinh(aValue) {
    var myTerm1 = Math.pow(Math.E, aValue);
    var myTerm2 = Math.pow(Math.E, -aValue);
-   
+
    return (myTerm1-myTerm2)/2;
 }
 
 function cosh(aValue) {
    var myTerm1 = Math.pow(Math.E, aValue);
    var myTerm2 = Math.pow(Math.E, -aValue);
-   
+
    return (myTerm1+myTerm2)/2;
 }
 
@@ -19,14 +19,31 @@ function tanh(aValue) {
     var neg = Math.exp(-aValue);
     return (pos - neg) / (pos + neg);
 }
- 
+
+function array_unique(array) {
+    var p, i, j;
+    for(i = array.length; i;){
+        for(p = --i; p > 0;){
+            if(array[i] === array[--p]){
+                for(j = p; --p && array[i] === array[p];);
+                i -= array.splice(p + 1, j - p).length;
+            }
+        }
+    }
+    return true;
+}
+
+function isArray(inputArray) {
+    return inputArray && !(inputArray.propertyIsEnumerable('length')) && typeof inputArray === 'object' && typeof inputArray.length === 'number';
+}
+
 function Calculator(mode) {
     var operators = {
         '(':{'priority':5},
         ')':{'priority':5},
         '±':{'priority':3, 'left': true},
         '!': {'priority':4},
-        '^':{'priority':3},
+        '^':{'priority':3, 'rightImportant': true},
         '*':{'priority':2},
         '/':{'priority':2},
         '+':{'priority':1},
@@ -45,14 +62,12 @@ function Calculator(mode) {
         'arccsc':{'priority':3, 'left': true},
         'sec':{'priority':3, 'left': true},
         'csc':{'priority':3, 'left': true},
-        //asfsaf
         'sinh':{'priority':3, 'left': true},
         'cosh':{'priority':3, 'left': true},
         'tanh':{'priority':3, 'left': true},
         'cth':{'priority':3, 'left': true},
         'sech':{'priority':3, 'left': true},
         'csch':{'priority':3, 'left': true},
-
         'sqrt':{'priority':3, 'left': true},
         'ln':{'priority':3, 'left': true},
         'log':{'priority':3, 'left': true}
@@ -64,7 +79,7 @@ function Calculator(mode) {
         'i': Math.sqrt(-1),
         'degree': Math.PI/180,
         'EulerGamma': 0.577216,
-        'GoldenRatio': (1+Math.sqrt(5))/2 
+        'GoldenRatio': (1+Math.sqrt(5))/2
     }
 
     var re =  new RegExp("[^\\w]","gi");
@@ -83,7 +98,7 @@ function Calculator(mode) {
                     temp.push(((temp[temp.length-1] == '(' || temp[temp.length-1] == 'undefined' || temp[temp.length-1] == null) && str[i] == '-')?'±':str.substr(i, 1));
                     lastIndex = i+1;
                }
-           }; 
+           };
         if (str.substr(lastIndex) !== '') temp.push(str.substr(lastIndex));
         str = temp;
 
@@ -97,11 +112,11 @@ function Calculator(mode) {
             if(ch == ' ') {
                 if(token.length > 0)
                     ret.push(token);
-     
+
                 token = '';
                 continue;
             }
-     
+
             if(ch in operators) {
                 if(token.length > 0)
                     ret.push(token);
@@ -122,13 +137,13 @@ function Calculator(mode) {
                         if ( t != '(' && ((operators[t].priority > operators[ch].priority) || operators[ch].left)) {
                             for(;;) {
                                 t = stack[stack.length - 1];
-                                if(t == undefined || t == null || operators[t].priority < operators[ch].priority || t == '(')
+                                if(t == undefined || t == null || ((operators[t].priority < operators[ch].priority) || operators[ch].left) || t == '(')
                                     break;
 
                                 t = stack.pop();
                                 ret.push(t);
                             }
-                        } else if(t!='(' && (operators[t].priority == operators[ch].priority)) {
+                        } else if(t!='(' && ((operators[t].priority == operators[ch].priority) && !operators[ch].rightImportant)) {
                             t = stack.pop();
                             ret.push(t);
                         }
@@ -139,31 +154,32 @@ function Calculator(mode) {
                 token += str[ind];
             }
         }
-     
+
         if(token.length > 0)
             ret.push(token);
-     
+
 
         while(stack.length!=0) {
             ret.push(stack.pop());
         }
 
+        //console.log(ret);
         return ret;
     }
-     
+
     var calcRPN = function(arrRPN) {
         var stack = [];
         var a = 0;
         var b = 0;
-     
+
         for(var i in arrRPN) {
             var token = arrRPN[i];
-     
+
             if(!(token in operators)) {
                 stack.push(token);
                 continue;
             }
-     
+
             switch(token) {
                 case '+':
                     b = stack.pop();
@@ -241,8 +257,6 @@ function Calculator(mode) {
                     a = stack.pop();
                     stack.push(1/Math.sin(parseFloat(a)));
                     break;
-
-                //asfasf
                 case 'sinh':
                     a = stack.pop();
                     stack.push(sinh(parseFloat(a)));
@@ -300,54 +314,279 @@ function Calculator(mode) {
         return stack.pop();
     }
 
-    var f = function(expression, x) {return parseFloat(calcRPN(toRPN(expression.replace(/\bx\b/g, "("+parseFloat(x)+")"))))}
+    var f = function(expression, x) {
+        if (isArray(x)) {
+            for(i=0; i<=x.length-1; i++) {
+                expression = expression.replace(new RegExp("\\bx"+(i+1)+"\\b", 'g'), "("+parseFloat(x[i])+")");
+            }
+        } else expression = expression.replace(/\bx\b/g, "("+parseFloat(x)+")")
+        return parseFloat(calcRPN(toRPN(expression)));
+    }
 
     var returnFunction;
     switch(mode) {
-        case 'transcendental':
-            returnFunction = function(expression, a, b, e) {
-                e = e || 0.0001; 
-                var c;
+        case 'diff':
+            returnFunction = function(expression, x, diffParam) {
+                var originX = x.concat();
 
-                if(!parseFloat(a) || !parseFloat(b)) {
-                    var dmax = 100;
-                        d = 0.01,
-                        x0 = 0,
+                if (isArray(originX)) {
+                    originX[diffParam-1] += 0.0000001;
+                } else originX += 0.0000001;
+                return (f(expression, originX)-f(expression, x))/0.0000001;
+            }
+            break;
+        case 'transcendental':
+            returnFunction = function(expression, aMax, bMax, e) {
+                if (!expression) return;
+                if (!isArray(expression) && !isArray(aMax)) {
+                    e = e || 0.0000001;
+    				aMax = aMax || -20;
+    				bMax = bMax || 20;
+                    var c;
+
+                    aMax = parseFloat(aMax); bMax = parseFloat(bMax);
+                    var dmax = 10;
+                        d = 0.0001,
+                        x0 = aMax + (Math.abs(aMax - bMax))/2,
                         f0 = f(expression, x0),
                         D = d,
                         a = x0 - D,
+                        b = x0,
+                        fa = f(expression, a),
+                        fb = f(expression, b),
+                        result = [];
+
+                    while(D <= dmax && a >= aMax) {
+                        D = D + d;
+    					console.log(a);
+                        if (f0 >= 0) {
+                            if (fa < 0) {b = x0; result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
+                            if (fb < 0) {b = x0; result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
+
+    						if(fa > fb) {b=x0; x0=b;  fa=f0; f0=fb; }
+                            else if(fa<fb) {b=x0; x0=a; a-=D; fb=f0; f0=fa; fa=f(expression, b);}
+                            else {a-=D; fa=f(expression, a);fb=f(expression, b);}
+                        } else {
+                            if(fa>=0) {b=x0;result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
+                            else if(fb>=0) {a=x0;result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
+                            if(fa<fb) {b=x0; x0=(b); fa=f0; f0=fb; fb=f(expression, b);}
+                            else if(fa>fb) {b=x0; x0=(a); a-=D; fb=f0; f0=fa; fa=f(expression, a);}
+                            else {a-=D;  fa=f(expression, a);fb=f(expression, b);}
+                        }
+
+                    }
+
+                    var x0 = aMax + (Math.abs(aMax - bMax))/2,
+                        f0 = f(expression, x0),
+                        D = d,
+                        a = x0,
                         b = x0 + D,
                         fa = f(expression, a),
                         fb = f(expression, b);
 
 
-                    while(D <= dmax) {
+    				while(D <= dmax && b<=bMax) {
                         D = D + d;
                         if (f0 >= 0) {
-                            if (fa < 0) {b = x0; break}
-                            if (fb < 0) {a = x0; break}
+                            if (fa < 0) {a = x0; result.push(a+":"+b); x0 = b; f0 = f(expression, x0);}
+                            if (fb < 0) {a = x0; result.push(a+":"+b); x0 = b; f0 = f(expression, x0);}
 
                             if(fa> fb) {a=x0; x0=b; b+=D; fa=f0; f0=fb; fb=f(expression, b);}
-                            else if(fa<fb) {b=x0; x0=a; a-=D; fb=f0; f0=fa; fa=f(expression, b);}
-                            else {a-=D; b+=D; fa=f(expression, a);fb=f(expression, b);}
+                            else if(fa<fb) {a=x0; x0=a; fb=f0; f0=fa; fa=f(expression, b);}
+                            else {b+=D; fa=f(expression, a);fb=f(expression, b);}
                         } else {
-                            if(fa>=0) {b=x0;break;}
-                            else if(fb>=0) {a=x0;break;}
+                            if(fa>=0) {a=x0; result.push(a+":"+b); x0 = b; f0 = f(expression, x0);}
+                            else if(fb>=0) {a=x0; result.push(a+":"+b); x0 = b; f0 = f(expression, x0);}
                             if(fa<fb) {a=x0; x0=(b); b+=D; fa=f0; f0=fb; fb=f(expression, b);}
-                            else if(fa>fb) {b=x0; x0=(a); a-=D; fb=f0; f0=fa; fa=f(expression, a);}
-                            else {a-=D; b+=D; fa=f(expression, a);fb=f(expression, b);}
+                            else if(fa>fb) {a=x0; x0=(a); fb=f0; f0=fa; fa=f(expression, a);}
+                            else {b+=D; fa=f(expression, a);fb=f(expression, b);}
                         }
                     }
-                }
+                    array_unique(result);
 
-                while (Math.abs(b - a) > e) {
-                    c = (a + b) / 2;
-                    if (f(expression, a) * f(expression, c) <= 0) b = c;
-                    else a = c;
-                }
+                    if (result.length < 1) return "Неможливво знайти корені"
+                    //половинчастого деления, дихотомии
+                    var roots = [];
+                    for (var i = 0; i < result.length; i++) {
+                        a = parseFloat(result[i].split(":")[0]);
+                        b = parseFloat(result[i].split(":")[1]);
+                        while (Math.abs(b - a) >= e) {
+                            c = (a + b) / 2;
+                            if (f(expression, a) * f(expression, c) < 0) b = c;
+                            else a = c;
+                        }
+                        roots.push(round_mod(parseFloat(c), 4));
+                    };
+                    // метод Хорд
+                    /*do {
+                        c = a-f(expression, a)*(b-a)/(f(expression, b)-f(expression, a));
+                        if (f(expression, a) * f(expression, c) < 0) b = c;
+                        else a = c;
+                    } while (Math.abs(f(expression, c))<e);*/
+                } else {
+                    var Fx = expression;
+                    var x = aMax;
+                    var N = 2;
+                    var EPS = 0.0000001;
 
-                return parseFloat((a + b) / 2);
+                    /* массивы с результатами текущего приближения */
+                    var fx=[];
+                    var ffx=[[],[],[]];
+                    /* обратная матрица к ffx */
+                    var ffx1=[];
+                    /* невязка */
+                    var nevyazka;
+                    /* вывод текущих значений x[i] */
+                    function printX() { for (var i = 0; i < N; i++) console.log(x[i]); }
+                    /* печать информации о текущей итерации: шаг невязка x1 x2 ... xN */
+                    function print(t) {
+                            console.log(t, nevyazka);
+                            console.log('Answer: ');
+                            printX();
+                    }
+
+                    /* ----------------------------- */
+                    /* MAIN функция (решение задачи) */
+                    /* ----------------------------- */
+
+
+                    // вывод текущих значений x[i]
+                    //printX();
+
+                    // основной итеративный цикл
+                    for (var t = 0; t < 1000; t++) {
+                        /* массив производных этих функций */
+                        ff = [
+                                [ diff(Fx[0],x,1), diff(Fx[0],x,2) ],
+                                [ diff(Fx[1],x,1), diff(Fx[1],x,2) ]
+                        ];
+
+
+
+                        /* -------------------------------------------------- */
+                        /* подсчет матриц с результатами текущего приближения */
+                        /* -------------------------------------------------- */
+
+                        // подсчет матрицы значений функции
+                        for (var i = 0; i < N; i++) {
+                                console.log(f(Fx[i], x), Fx[i], x);
+                                fx[i] = f(Fx[i], x);
+                        }
+
+
+                        // подсчет матрицы производных функции
+                        for (var i = 0; i < N; i++) {
+                                for (var j = 0; j < N; j++) {
+                                        ffx[i][j] = ff[i][j];
+                                        //console.log(ffx);
+                                }
+                        }
+
+                        /* --------------------------------------------- */
+                        /* подсчет матрицы обратной ffx (методом Гаусса) */
+                        /* --------------------------------------------- */
+
+                        // зануляем массив
+                        ffx1 = [[0,0,0],[0,0,0]];
+
+                        // устанавливаем единички на диагонали будущей обратной матрице
+                        for (var i = 0; i < N; i++)
+                                ffx1[i][i] = 1;
+
+                        var  r;
+                        for (var i = 0; i < N; i++)
+                        {
+                                // вычитаем i-ую строку из k-ой строки
+                                for (var i = 0; i < N; i++) {
+                                        for (var k = 0; k < N; k++) {
+                                                // саму из себя строку нельзя вычитать
+                                                if (i == k) continue;
+
+                                                // вычисляем коэффициент вычитания
+                                                r = ffx[k][i] / ffx[i][i];
+                                                console.log("r = ", r);
+                                                // вычитаем по очереди каждый элемент строки
+                                                for (var j = 0; j < N; j++) {
+                                                        ffx[k][j] -= r * ffx[i][j];
+                                                        ffx1[k][j] -= r * ffx1[i][j];
+                                                }
+                                        }
+                                }
+                        }
+
+
+
+                        for (var i = 0; i < N; i++) {
+                                // вычисляем коэффициент "нормализации" (предполагается, что i-ый элемент i-ой строки НЕ! равен нулю)
+                                r = ffx[i][i];
+                                // "нормализуем" строку матрицы
+                                for (var j = 0; j < N; j++) {
+                                        ffx[i][j] /= r;
+                                        ffx1[i][j] /= r;
+                                }
+
+                        }
+
+                        /* ------------------------------------- */
+                        /* проверяем: единичная ли вышла матрица */
+                        /* ------------------------------------- */
+
+                        if(0) {
+                            for (var i = 0; i < N; i++) {
+                                    for (var j = 0; j < N; j++) {
+                                            var dx = 0;
+                                            for (var k = 0; k < N; k++)
+                                                    dx += ffx1[i][k] * ff[k][j];
+                                    }
+                            }
+                        }
+
+                        /* ------------------------------------- */
+                        /* вычисление следующего приблизижения x */
+                        /* ------------------------------------- */
+
+                        for (var i = 0; i < N; i++) {
+                                // вычисляем i-ую строку произведения матриц ffx1 на fx
+                                var dx = 0;
+                                for (var k = 0; k < N; k++)
+                                        dx += ffx1[i][k] * fx[k];
+                                // следующее значение x_i+1 равно x_i - dx
+                                x[i] = x[i] - dx;
+                        }
+
+                        /* ------------------ */
+                        /* вычисление невязки */
+                        /* ------------------ */
+
+                        nevyazka = 0;
+                        for (var i = 0; i < N; i++)
+                                nevyazka += Math.pow( f(Fx[i], x), 2);
+                        nevyazka = Math.sqrt(nevyazka);
+
+
+                        /* ---------------- */
+                        /* вывод информации */
+                        /* ---------------- */
+
+                        roots = x || roots;
+
+                        /* ------------------------------------------------ */
+                        /* вывод невязка ничтожна мала, то конец итерациям! */
+                        /* ------------------------------------------------ */
+                        if (nevyazka < EPS) break;
+
+                        /* ------------------------------ */
+                        /* вывод кривой вывод, то выхоидм */
+                        /* ------------------------------ */
+                        if (1) if (isNaN(nevyazka))  break;
+                    }
+                }
+                alert(roots);
+                return roots;
             }
+        break;
+        case 'transcendental2':
+            returnFunction = function(Fx, x) {}
         break;
         case 'integral':
             returnFunction = function(expression, a, b, n) {
