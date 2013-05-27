@@ -68,6 +68,7 @@ function Calculator(mode) {
         'cth':{'priority':3, 'left': true},
         'sech':{'priority':3, 'left': true},
         'csch':{'priority':3, 'left': true},
+
         'sqrt':{'priority':3, 'left': true},
         'ln':{'priority':3, 'left': true},
         'log':{'priority':3, 'left': true}
@@ -173,7 +174,7 @@ function Calculator(mode) {
         var b = 0;
 
         for(var i in arrRPN) {
-            var token = arrRPN[i];
+            var token = arrRPN[i].toLowerCase();
 
             if(!(token in operators)) {
                 stack.push(token);
@@ -257,6 +258,8 @@ function Calculator(mode) {
                     a = stack.pop();
                     stack.push(1/Math.sin(parseFloat(a)));
                     break;
+
+                //asfasf
                 case 'sinh':
                     a = stack.pop();
                     stack.push(sinh(parseFloat(a)));
@@ -339,14 +342,14 @@ function Calculator(mode) {
             returnFunction = function(expression, aMax, bMax, e) {
                 if (!expression) return;
                 if (!isArray(expression) && !isArray(aMax)) {
-                    e = e || 0.0000001;
+                    e = (!!document.querySelector("#highAccuracy").checked)?0.000001:0.0001;
     				aMax = aMax || -20;
     				bMax = bMax || 20;
                     var c;
 
                     aMax = parseFloat(aMax); bMax = parseFloat(bMax);
                     var dmax = 10;
-                        d = 0.0001,
+                        d = e,
                         x0 = aMax + (Math.abs(aMax - bMax))/2,
                         f0 = f(expression, x0),
                         D = d,
@@ -358,7 +361,6 @@ function Calculator(mode) {
 
                     while(D <= dmax && a >= aMax) {
                         D = D + d;
-    					console.log(a);
                         if (f0 >= 0) {
                             if (fa < 0) {b = x0; result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
                             if (fb < 0) {b = x0; result.push(a+":"+b); x0 = a; f0 = f(expression, x0);}
@@ -404,7 +406,7 @@ function Calculator(mode) {
                     }
                     array_unique(result);
 
-                    if (result.length < 1) return "Неможливво знайти корені"
+                    if (result.length < 1) return;
                     //половинчастого деления, дихотомии
                     var roots = [];
                     for (var i = 0; i < result.length; i++) {
@@ -415,7 +417,7 @@ function Calculator(mode) {
                             if (f(expression, a) * f(expression, c) < 0) b = c;
                             else a = c;
                         }
-                        roots.push(round_mod(parseFloat(c), 4));
+                        roots.push(round_mod(parseFloat(c), 8));
                     };
                     // метод Хорд
                     /*do {
@@ -426,8 +428,8 @@ function Calculator(mode) {
                 } else {
                     var Fx = expression;
                     var x = aMax;
-                    var N = 2;
-                    var EPS = 0.0000001;
+                    var N = Fx.length;
+                    var EPS = e * 2;
 
                     /* массивы с результатами текущего приближения */
                     var fx=[];
@@ -456,11 +458,19 @@ function Calculator(mode) {
                     // основной итеративный цикл
                     for (var t = 0; t < 1000; t++) {
                         /* массив производных этих функций */
-                        ff = [
+                        /*ff = [
                                 [ diff(Fx[0],x,1), diff(Fx[0],x,2) ],
                                 [ diff(Fx[1],x,1), diff(Fx[1],x,2) ]
-                        ];
+                        ];*/
 
+                        ff=[];
+
+                        for (var i = 0; i < N; i++) {
+                            ff[i] = [];
+                                for (var j = 0; j < N; j++) {
+                                        ff[i][j] = diff(Fx[i],x,j+1)
+                                }
+                        }
 
 
                         /* -------------------------------------------------- */
@@ -469,7 +479,6 @@ function Calculator(mode) {
 
                         // подсчет матрицы значений функции
                         for (var i = 0; i < N; i++) {
-                                console.log(f(Fx[i], x), Fx[i], x);
                                 fx[i] = f(Fx[i], x);
                         }
 
@@ -487,7 +496,12 @@ function Calculator(mode) {
                         /* --------------------------------------------- */
 
                         // зануляем массив
-                        ffx1 = [[0,0,0],[0,0,0]];
+                        for (var i = 0; i < N; i++) {
+                            ffx1[i] = [];
+                                for (var j = 0; j < N; j++) {
+                                        ffx1[i][j] = 0
+                                }
+                        }
 
                         // устанавливаем единички на диагонали будущей обратной матрице
                         for (var i = 0; i < N; i++)
@@ -504,7 +518,6 @@ function Calculator(mode) {
 
                                                 // вычисляем коэффициент вычитания
                                                 r = ffx[k][i] / ffx[i][i];
-                                                console.log("r = ", r);
                                                 // вычитаем по очереди каждый элемент строки
                                                 for (var j = 0; j < N; j++) {
                                                         ffx[k][j] -= r * ffx[i][j];
@@ -513,8 +526,6 @@ function Calculator(mode) {
                                         }
                                 }
                         }
-
-
 
                         for (var i = 0; i < N; i++) {
                                 // вычисляем коэффициент "нормализации" (предполагается, что i-ый элемент i-ой строки НЕ! равен нулю)
@@ -563,25 +574,11 @@ function Calculator(mode) {
                                 nevyazka += Math.pow( f(Fx[i], x), 2);
                         nevyazka = Math.sqrt(nevyazka);
 
-
-                        /* ---------------- */
-                        /* вывод информации */
-                        /* ---------------- */
-
                         roots = x || roots;
 
-                        /* ------------------------------------------------ */
-                        /* вывод невязка ничтожна мала, то конец итерациям! */
-                        /* ------------------------------------------------ */
-                        if (nevyazka < EPS) break;
-
-                        /* ------------------------------ */
-                        /* вывод кривой вывод, то выхоидм */
-                        /* ------------------------------ */
-                        if (1) if (isNaN(nevyazka))  break;
+                        if (nevyazka < EPS && isNaN(nevyazka)) break;
                     }
                 }
-                alert(roots);
                 return roots;
             }
         break;

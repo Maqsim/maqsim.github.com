@@ -6,7 +6,29 @@ function round_mod(value, precision) {
     return Math.round(value * precision_number) / precision_number;
 }
 
-plot = "";
+function addClass(el, className) {
+    el.className += ' '+className;
+}
+
+function removeClass(el, className){
+    var elClass = ' '+el.className+' ';
+    while(elClass.indexOf(' '+className+' ') != -1)
+         elClass = elClass.replace(' '+className+' ', '');
+    el.className = elClass;
+}
+
+function hasNaN (arr) {
+    for(var i = 0, l = arr.length; i < l; i++) {
+        if(isNaN(arr[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+plot = {};
 
 scale = 40;
 colors = [];
@@ -31,7 +53,7 @@ window.onload = function() {
     document.querySelector("#integral form").onsubmit = function() {
         var a = simple(this.parentNode.querySelector(".a").value),
             b = simple(this.parentNode.querySelector(".b").value),
-            n = (!!this.parentNode.querySelector("#highAccuracy").checked)?100000:1000;
+            n = 10000;
             fx = this.parentNode.querySelector(".fx").value;
 
         this.parentNode.querySelector("span.result").innerHTML = round_mod(integral(fx, a, b, n), 8);
@@ -40,49 +62,66 @@ window.onload = function() {
     }
 
     document.querySelector("#transcendental form").onsubmit = function() {
-        var fx = this.parentNode.querySelector(".fx").value,
-            a, b, rangePos, eqPos;
+        var inputExpression = this.parentNode.querySelector(".fx").value.replace(/^\s+|\s+$/g, "").toLowerCase(),
+            a, b, rangePos, eqPos, fx;
+		var single = true;
 
-        if((rangePos = fx.indexOf('[')) > 1) {
-          a = fx.substr(rangePos).split(';')[0].substr(1);
-          b = fx.substr(rangePos).split(';')[1].slice(0, -1);
-          fx = fx.substr(0, rangePos);
+        if (plot === null) plot = {};
+
+        if((rangePos = inputExpression.indexOf('[')) >= 1) {
+          a = inputExpression.substr(rangePos).split(';')[0].substr(1);
+          b = inputExpression.substr(rangePos).split(';')[1].slice(0, -1);
+          inputExpression = inputExpression.substr(0, rangePos);
+		  plot.a = a;
+		  plot.b = b;
         }
 
-        plot = fx;
+        fx = inputExpression;
+        plot.fx = fx;
 
-        if((eqPos = fx.indexOf('=')) > 1) {
-          var f = fx.split('=')[0].replace(/^\s+|\s+$/g, "");
-          var g = fx.split('=')[1].replace(/^\s+|\s+$/g, "");
+        if((eqPos = inputExpression.indexOf('=')) >= 1) {
+          var f = inputExpression.split('=')[0].replace(/^\s+|\s+$/g, "");
+          var g = inputExpression.split('=')[1].replace(/^\s+|\s+$/g, "");
           fx = '('+f+')-('+g+')';
-          plot = f+","+g;
+          plot.fx = f+","+g;
         }
 
-        if(fx.indexOf('{') !== -1 && fx.indexOf('}') !== -1) {
-          plot = fx.slice(1,-1);
-          fx = null;
+
+        if(inputExpression.lastIndexOf('{') > inputExpression.indexOf('}') && inputExpression.lastIndexOf('{') < inputExpression.lastIndexOf('}')) {
+            fx = inputExpression.slice(1, inputExpression.indexOf('}')).split(',');
+            a = inputExpression.slice(inputExpression.lastIndexOf('{')+1, inputExpression.lastIndexOf('}')).split(',');
+            plot = null;
+			single = false;
+        } else if(inputExpression.indexOf('{') !== -1 && inputExpression.indexOf('}') !== -1) {
+            plot.fx = inputExpression.slice(1,-1);
+            fx = null;
         }
 
-        draw(plot);
         var result = transcendental(fx, a, b);
+        if (isNaN(result) && (isArray(result) && hasNaN(result))) {
+            addClass(document.querySelector("#transcendental input"), 'red');
+            return false;
+        } else removeClass(document.querySelector("#transcendental input"), 'red');
+
+        if(!plot || plot.length == 0 || JSON.stringify(plot).length === 2) {
+            document.querySelector("canvas").style.display = "none";
+        } else {
+            document.querySelector("canvas").style.display = "block";
+            draw(plot);
+        }
+
+		if (single && result) result = result.sort(function(a,b){return a-b;});
         if (isArray(result)) result = result.join('<br>');
-        if (fx) this.parentNode.querySelector("span.result").innerHTML = result;
+        if (fx) this.parentNode.querySelector("span.result").innerHTML = result || 'Неможливо знайти корені.';
 
         return false;
     }
 
-    document.querySelector("#transcendental2 form").onsubmit = function() {
-        var x1 = simple(this.parentNode.querySelector(".x1").value),
-            x2 = simple(this.parentNode.querySelector(".x2").value),
-            fx1 = this.parentNode.querySelector(".fx1").value,
-            fx2 = this.parentNode.querySelector(".fx2").value;
-        var result = transcendental([fx1,fx2], [x1,x2]);
-        if (isArray(result)) result = result.join('<br>');
-
-        this.parentNode.querySelector("span.result").innerHTML = result;
+    document.querySelector("a[href='#more']").onclick = function() {
+        document.querySelector("#integral").style.display = "block";
+        this.style.display = "none";
         return false;
     }
-
 
     var elem = document.querySelector('canvas');
 
@@ -111,9 +150,10 @@ window.onload = function() {
           var e = e || window.event;
           xx = xPos + e.offsetX - x;
           yy = yPos + e.offsetY - y;
+		  xPosMouse = (e.offsetX - xPos)/scale;
+		  draw(plot, xx, yy);
         }
-        xPosMouse = (e.offsetX - xPos)/scale;
-        draw(plot, xx, yy);
+
     };
 
     elem.onmouseup=function(e){
@@ -144,12 +184,26 @@ function draw(func, startX, startY) {
      axes={}, ctx=canvas.getContext("2d");
      axes.x0 = startX || xPos;  // x0 pixels from left to x=0
      axes.y0 = startY || yPos; // y0 pixels from top to y=0
-     axes.scale = scale;                 // 40 pixels from x=0 to x=1
+     axes.scale = scale;        // 40 pixels from x=0 to x=1
      axes.doNegativeX = true;
 
      showAxes(ctx,axes);
-     if(!func || func.length == 0) return;
+
+     if(!func || func.length == 0 || JSON.stringify(func).length === 2) {
+        if(func === null) {
+            ctx.font="16px Georgia";
+            ctx.fillStyle="000";
+            ctx.fillText("Неможливо побудувати графік системи", 55,100);
+        }
+        return;
+     }
+
+	 var a = func.a;
+	 var b = func.b;
+	 func = func.fx;
+
      var functions = func.split(",");
+	 array_unique(functions);
      if (typeof func == 'string' && !functions[1]) funGraph(ctx, axes, func, colors[0], 1);
      else {
         for (var i = functions.length - 1; i >= 0; i--) {
@@ -157,9 +211,17 @@ function draw(func, startX, startY) {
         };
      }
 
-     ctx.font="9px sans-serif";
-      ctx.fillStyle="000";
-     ctx.fillText("x: "+xPosMouse, 350,290);
+    ctx.font="9px sans-serif";
+    ctx.fillStyle="000";
+    ctx.fillText("x: "+xPosMouse, 350,290);
+
+	ctx.beginPath();
+	ctx.globalAlpha=0.2;
+	ctx.fillStyle = "#FC1212";
+    ctx.fillRect(axes.x0 + a * axes.scale,0,(b-a)*axes.scale, ctx.canvas.height);
+	ctx.globalAlpha=1;
+	ctx.fillStyle="#000";
+	ctx.fill();
 }
 
 function funGraph (ctx,axes,func,color,thick, pos) {
@@ -200,6 +262,7 @@ function showAxes(ctx,axes) {
      ctx.moveTo(xmin,y0); ctx.lineTo(w,y0);  // X axis
      ctx.moveTo(x0,0);    ctx.lineTo(x0,h);  // Y axis
      ctx.stroke();
+
      if (axes.scale*zoom <= 20) zoom++;
      else if(axes.scale*zoom > 40 && zoom != 1) zoom--;
 
@@ -207,7 +270,7 @@ function showAxes(ctx,axes) {
         i=i+axes.scale*zoom;
          ctx.beginPath();
          ctx.font="9px sans-serif";
-         ctx.fillStyle="000";
+         ctx.fillStyle="#000";
          ctx.fillText(counter*zoom, i-3, y0+13);
          ctx.lineCap = "round";
          ctx.strokeStyle = "#848c94";
@@ -226,7 +289,7 @@ function showAxes(ctx,axes) {
         i=i+axes.scale*zoom;
          ctx.beginPath();
          ctx.font="9px sans-serif";
-         ctx.fillStyle="444";
+         ctx.fillStyle="#444";
          ctx.fillText(-counter*zoom, x0+7, i+2);
          ctx.lineCap = "round";
          ctx.strokeStyle = "#848c94";
@@ -247,7 +310,7 @@ function showAxes(ctx,axes) {
              ctx.beginPath();
 
              ctx.font="8px sans-serif";
-             ctx.fillStyle="a5abb0";
+             ctx.fillStyle="#a5abb0";
              ctx.fillText(-counter*zoom/10, x0+7, i+2);
              ctx.lineWidth=1;
              ctx.lineCap = "round";

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -54,7 +54,7 @@
 
 			input[type='text'] {
 				font-size: 11px;
-				padding: 3px 5px;
+				padding: 3px 4px;
 				border: 1px solid #DAE1E8;
 				margin: 2px 0;
 
@@ -67,6 +67,15 @@
 			    -ms-transition: all .2s;
 			    -o-transition: all .2s;
 			    transition: all .2s;
+			}
+
+			#transcendental input[type='text'] {
+				padding: 5px;
+				font-size: 13px;
+			}
+
+			#transcendental input[type='text'].red {
+				border-color: red;
 			}
 
 			input[type='text']:focus {
@@ -290,47 +299,18 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="help" class="block" style="display:none">
-				<h3>Теорія</h3>
-				<ul>
-					<li><a href="synopsis.doc">Конспект лекцій з дисципліни "Спеціальна дисципліна з напрямку випускної роботи"</a></li>
-					<li><a href="#instruction">Інструкція</a></li>
-				</ul>
-			</div>
 			<div id="transcendental" class="block">
 				<form action="">
-					<input type="text" style="width: 100%" placeholder="F(x)" class="fx" required autofocus>
-					<!--<input type="text" style="width: 40px;" placeholder="a" class="a"> <input type="text" style="width: 40px;" placeholder="b" class="b"> <input type="text" style="width: 40px;" placeholder="e" class="e"> <span style="color: #777"> — необов'язкові поля</span>-->
+					<input type="text" style="width: 100%" placeholder="Введіть завдання" class="fx" required autofocus>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				</form>
 				<canvas id="graph" style="margin-top: 10px"></canvas>
-				<span class="result"></span>
-			</div>
-			<!--<div id="graph" class="block">
-				<form action="">
-					<input type="text" style="width: 100%" placeholder="F(x)" class="fx" required>
-					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
-				</form>
-
-			</div>-->
-
-			<div id="transcendental2" class="block">
-				<form action="">
-					<h3>Трансцендентне рівняння</h3>
-					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx1" required value="sin x1 - x2^x3"><br>
-					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx2" required value="x1 - cos x2 + x3"><br>
-					<input type="text" size="42" placeholder="F(x1,x2,x3)" class="fx3" required value="arccos x2"><br>
-
-					<input type="text" style="width: 40px;" placeholder="x1" class="x1" required value="1">
-					<input type="text" style="width: 40px;" placeholder="x2" required class="x2" value="1">
-					<input type="text" style="width: 40px;" placeholder="x3" required class="x3" value="2"> <span style="color: #777"> — початкові наближення</span>
-					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
-				</form>
+				<input id="highAccuracy" type="checkbox"><label for="highAccuracy">Надточне обчислення</label>
+				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				<span class="result"></span>
 			</div>
 
-
-			<div id="integral" class="block">
+			<div id="integral" class="block" style="display: none">
 				<form action="">
 					<h3>Визначений інтеграл</h3>
 					<input type="text" style="width: 50px;" required placeholder="b" class="b"><br>
@@ -340,8 +320,11 @@
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				</form>
 			</div>
+			<div id="footer" style="margin-bottom: 10px;">
+				<a href="#more">Більше</a>
+			</div>
 			<div id="footer">
-				<a href="#about">Максим Дяченко</a>
+				<a href="#about">Про програму</a>
 			</div>
 		</div>
 		<aside id="instruction" class="modal">
