@@ -83,7 +83,8 @@ window.onload = function() {
           var f = inputExpression.split('=')[0].replace(/^\s+|\s+$/g, "");
           var g = inputExpression.split('=')[1].replace(/^\s+|\s+$/g, "");
           fx = '('+f+')-('+g+')';
-          plot.fx = f+","+g;
+          if (!parseFloat(g)) plot.fx = f+","+g;
+          else plot.fx = f+" - "+g;
         }
 
 
@@ -96,6 +97,8 @@ window.onload = function() {
             plot.fx = inputExpression.slice(1,-1);
             fx = null;
         }
+
+        console.log(plot);
 
         var result = transcendental(fx, a, b);
         if (isNaN(result) && (isArray(result) && hasNaN(result))) {
