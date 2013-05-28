@@ -70,8 +70,7 @@
 			}
 
 			#transcendental input[type='text'] {
-				padding: 5px;
-				font-size: 13px;
+				padding: 5px 6px;
 			}
 
 			#transcendental input[type='text'].red {
@@ -316,7 +315,6 @@
 					<input type="text" style="width: 50px;" required placeholder="b" class="b"><br>
 					<img style="margin-bottom: -14px; height: 35px" src="integral.png" alt="integral"><input type="text" required size="40" placeholder="F(x)" class="fx"> dx = <span class="result"></span><br>
 					<input type="text" required style="margin-top: 8px; width: 50px;" placeholder="a" class="a">
-					<input id="highAccuracy" type="checkbox"><label for="highAccuracy">Надточне обчислення</label>
 					<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
 				</form>
 			</div>
@@ -327,20 +325,9 @@
 				<a href="#about">Про програму</a>
 			</div>
 		</div>
-		<aside id="instruction" class="modal">
+		<aside id="about" class="modal">
 		    <div>
-		    	<h3>Замітки</h3>
-		        <p>
-		        	<ul>
-		        		<li>Для обчислення трансцендентного рівняння використовується метод половинчастого ділення(дихотомії), а для автоматичної локалізації коренів — метод перебору</li>
-		        		<li>Для чисельного знаходження визначеного інтегралу використовується алгоритм трапецій</li>
-		        		<li>Enter — розрахунок, якщо фокус встановлено в одне із полів</li>
-						<li>В блоці "Трансцендентне рівняння" параметр "e"(точність) за замовчуванням дорівнює 0.001</li>
-						<li>"Надточне обчислення" дає змогу отримати більш точний результат, але потребує більше ресурсів та часу</li>
-					</ul>
-		        </p>
-
-		        <h3>Підтримувані функції калькулятора</h3>
+		    	<h3>Підтримувані функції калькулятора</h3>
 		        <p>
 		        	<h4>Константи</h4>
 		        	<ul>
@@ -406,11 +393,7 @@
 						<li>Еліптичні функції</li>
 					</ul>
 		    	</p>
-		        <a href="#close" title="Close">Close</a>
-		    </div>
-		</aside>
-		<aside id="about" class="modal">
-		    <div>
+
 		        <h3>Контакти</h3>
 		        <p><ul>
 		        	<li><a href="http://vk.com/kaleid05cope">ВКонтакте</a></li>
