@@ -68,7 +68,6 @@ function Calculator(mode) {
         'cth':{'priority':3, 'left': true},
         'sech':{'priority':3, 'left': true},
         'csch':{'priority':3, 'left': true},
-
         'sqrt':{'priority':3, 'left': true},
         'ln':{'priority':3, 'left': true},
         'log':{'priority':3, 'left': true}
@@ -258,8 +257,6 @@ function Calculator(mode) {
                     a = stack.pop();
                     stack.push(1/Math.sin(parseFloat(a)));
                     break;
-
-                //asfasf
                 case 'sinh':
                     a = stack.pop();
                     stack.push(sinh(parseFloat(a)));
@@ -284,7 +281,6 @@ function Calculator(mode) {
                     a = stack.pop();
                     stack.push(1/(1/Math.sin(parseFloat(a))));
                     break;
-
                 case 'sqrt':
                     a = stack.pop();
                     stack.push(Math.sqrt(parseFloat(a)));
@@ -386,7 +382,6 @@ function Calculator(mode) {
                         fa = f(expression, a),
                         fb = f(expression, b);
 
-
     				while(D <= dmax && b<=bMax) {
                         D = D + d;
                         if (f0 >= 0) {
@@ -447,24 +442,10 @@ function Calculator(mode) {
                             printX();
                     }
 
-                    /* ----------------------------- */
-                    /* MAIN функция (решение задачи) */
-                    /* ----------------------------- */
-
-
-                    // вывод текущих значений x[i]
-                    //printX();
-
                     // основной итеративный цикл
                     for (var t = 0; t < 1000; t++) {
-                        /* массив производных этих функций */
-                        /*ff = [
-                                [ diff(Fx[0],x,1), diff(Fx[0],x,2) ],
-                                [ diff(Fx[1],x,1), diff(Fx[1],x,2) ]
-                        ];*/
-
+                        // массив производных функций
                         ff=[];
-
                         for (var i = 0; i < N; i++) {
                             ff[i] = [];
                                 for (var j = 0; j < N; j++) {
@@ -472,16 +453,10 @@ function Calculator(mode) {
                                 }
                         }
 
-
-                        /* -------------------------------------------------- */
-                        /* подсчет матриц с результатами текущего приближения */
-                        /* -------------------------------------------------- */
-
                         // подсчет матрицы значений функции
                         for (var i = 0; i < N; i++) {
                                 fx[i] = f(Fx[i], x);
                         }
-
 
                         // подсчет матрицы производных функции
                         for (var i = 0; i < N; i++) {
@@ -490,10 +465,6 @@ function Calculator(mode) {
                                         //console.log(ffx);
                                 }
                         }
-
-                        /* --------------------------------------------- */
-                        /* подсчет матрицы обратной ffx (методом Гаусса) */
-                        /* --------------------------------------------- */
 
                         // зануляем массив
                         for (var i = 0; i < N; i++) {
@@ -515,7 +486,6 @@ function Calculator(mode) {
                                         for (var k = 0; k < N; k++) {
                                                 // саму из себя строку нельзя вычитать
                                                 if (i == k) continue;
-
                                                 // вычисляем коэффициент вычитания
                                                 r = ffx[k][i] / ffx[i][i];
                                                 // вычитаем по очереди каждый элемент строки
@@ -535,26 +505,7 @@ function Calculator(mode) {
                                         ffx[i][j] /= r;
                                         ffx1[i][j] /= r;
                                 }
-
                         }
-
-                        /* ------------------------------------- */
-                        /* проверяем: единичная ли вышла матрица */
-                        /* ------------------------------------- */
-
-                        if(0) {
-                            for (var i = 0; i < N; i++) {
-                                    for (var j = 0; j < N; j++) {
-                                            var dx = 0;
-                                            for (var k = 0; k < N; k++)
-                                                    dx += ffx1[i][k] * ff[k][j];
-                                    }
-                            }
-                        }
-
-                        /* ------------------------------------- */
-                        /* вычисление следующего приблизижения x */
-                        /* ------------------------------------- */
 
                         for (var i = 0; i < N; i++) {
                                 // вычисляем i-ую строку произведения матриц ffx1 на fx
@@ -565,17 +516,11 @@ function Calculator(mode) {
                                 x[i] = x[i] - dx;
                         }
 
-                        /* ------------------ */
-                        /* вычисление невязки */
-                        /* ------------------ */
-
                         nevyazka = 0;
                         for (var i = 0; i < N; i++)
                                 nevyazka += Math.pow( f(Fx[i], x), 2);
                         nevyazka = Math.sqrt(nevyazka);
-
                         roots = x || roots;
-
                         if (nevyazka < EPS && isNaN(nevyazka)) break;
                     }
                 }
