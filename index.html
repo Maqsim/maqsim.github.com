@@ -9,6 +9,8 @@
   <meta name="keywords" content="fullpage,jquery,alvaro,trigo,plugin,fullscren,screen,full,iphone5,apple"/>
   <meta name="Resource-type" content="Document"/>
 
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.css"/>
@@ -50,17 +52,30 @@
 
       $('#fullpage').fullpage({
         anchors: ['about', 'principles', 'portfolio', 'music', 'hobby', 'contact'],
-        sectionsColor: ['#fff', '#fff', '#fff', '#ff5500', '#fff', '#fff'],
+        sectionsColor: ['#fff', '#fff', '#333', '#ff5500', '#fff', '#fff'],
         css3: true,
         navigation: true,
         menu: '#menu',
         scrollingSpeed: 700,
         showActiveTooltip: true,
         slidesNavigation: true,
-        loopTop: true,
-        loopBottom: true,
+        loopTop: false,
+        loopBottom: false,
         lazyLoading: false,
-        recordHistory: false
+        recordHistory: false,
+        controlArrows: false,
+
+        onLeave: function (origin, destination) {
+          switch (destination) {
+            case 2:
+            case 5:
+            case 6:
+              $('#menu').addClass('__black');
+              break;
+            default:
+              $('#menu').removeClass('__black');
+          }
+        }
       });
     });
 
@@ -123,10 +138,9 @@
     </div>
   </div>
   <div class="section" id="section2">
-    <div class="intro">
-      <h1>Example</h1>
-      <p>HTML markup example to define 4 sections.</p>
-      <img src="imgs/example2.png" alt="example"/>
+    <div class="intro" style="color: white !important;">
+      <h1>TDB</h1>
+      <p>Projects will be added very soon</p>
     </div>
   </div>
   <div class="section" id="section3">
@@ -146,32 +160,37 @@
     <div class="intro">
       <h1>Hobby</h1>
       <table style="text-align: left; width: 285px; margin: 0 auto; font-size: 13px;">
-        <tr><td>Musician</td><td><a class="link" href="#music">Miax</a></td></tr>
-        <tr><td>Youtube</td><td><a class="link" href="#youtube">MaxDiachenko</a></td></tr>
-        <tr><td>Telegram</td><td><a class="link" href="https://t.me/successfulfreelancer" target="_blank">"Успешный Фрилансер"</a></td></tr>
-        <tr><td>Rider</td><td><a class="link" href="https://instagram.fiev13-1.fna.fbcdn.net/vp/f41d4f7ec254a33c284591d9ae6bd690/5CDC2B2C/t51.2885-15/e35/33989971_2091648847726697_5272889804080545792_n.jpg?_nc_ht=instagram.fiev13-1.fna.fbcdn.net" target="_blank">Kawasaki Z750R</a></td></tr>
-        <tr><td>Photography</td><td><a class="link" href="https://www.instagram.com/miax_official/" target="_blank">Instagram</a></td></tr>
-        <tr><td>Game</td><td><a class="link" href="https://connect.unity.com/p/cat-armstrong" target="_blank">Moon Run</a> (ongoing)</td></tr>
+        <tr>
+          <td>Musician</td>
+          <td><a class="link" href="#music">Miax</a></td>
+        </tr>
+        <tr>
+          <td>Youtube</td>
+          <td><a class="link" href="#youtube">MaxDiachenko</a></td>
+        </tr>
+        <tr>
+          <td>Telegram</td>
+          <td><a class="link" href="https://t.me/successfulfreelancer" target="_blank">"Успешный Фрилансер"</a></td>
+        </tr>
+        <tr>
+          <td>Rider</td>
+          <td><a class="link" href="https://instagram.fiev13-1.fna.fbcdn.net/vp/f41d4f7ec254a33c284591d9ae6bd690/5CDC2B2C/t51.2885-15/e35/33989971_2091648847726697_5272889804080545792_n.jpg?_nc_ht=instagram.fiev13-1.fna.fbcdn.net" target="_blank">Kawasaki Z750R</a></td>
+        </tr>
+        <tr>
+          <td>Photography</td>
+          <td><a class="link" href="https://www.instagram.com/miax_official/" target="_blank">Instagram</a></td>
+        </tr>
+        <tr>
+          <td>Game</td>
+          <td><a class="link" href="https://connect.unity.com/p/cat-armstrong" target="_blank">Moon Run</a> (ongoing)</td>
+        </tr>
       </table>
-      <!--<ul style="text-align: left; width: 500px; margin: 0 auto">-->
-        <!--<li>Musician – <a class="link" href="#music">Miax</a></li>-->
-        <!--<li>Youtube – <a class="link" href="#youtube">MaxDiachenko</a></li>-->
-        <!--<li>Telegram – <a class="link" href="https://t.me/successfulfreelancer" target="_blank">"Успешный Фрилансер"</a></li>-->
-        <!--<li>Rider – <a class="link" href="https://instagram.fiev13-1.fna.fbcdn.net/vp/f41d4f7ec254a33c284591d9ae6bd690/5CDC2B2C/t51.2885-15/e35/33989971_2091648847726697_5272889804080545792_n.jpg?_nc_ht=instagram.fiev13-1.fna.fbcdn.net" target="_blank">Kawasaki Z750R</a></li>-->
-        <!--<li>Photography – <a class="link" href="https://www.instagram.com/miax_official/" target="_blank">Instagram</a></li>-->
-        <!--<li></li>-->
-      <!--</ul>-->
     </div>
   </div>
   <div class="section" id="section5">
     <div class="intro">
-      <h1>Working On Tabletsss</h1>
-      <p>
-        Designed to fit to different screen sizes as well as tablet and mobile devices.
-        <br/><br/><br/><br/><br/><br/>
-      </p>
+      Skype: mdh-person
     </div>
-    <img src="imgs/tablets.png" alt="tablets"/>
   </div>
 </section>
 
