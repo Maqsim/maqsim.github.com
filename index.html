@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -13,8 +13,8 @@
   </script>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Max Diachenko</title>
-  <meta name="author" content="Alvaro Trigo Lopez"/>
+  <title>Max Diachenko – The Best Full-stack Developer</title>
+  <meta name="author" content="Max Diachenko"/>
   <meta name="description" content="Best full-stack developer in 2019 (maybe). My little home in the Internet"/>
   <meta name="keywords" content="maxdiachenko,miax,freelancer,top rated feelancer,max diachenko,youtuber,musician,game dev,programmer,developer,fullstack developer"/>
   <meta name="Resource-type" content="Document"/>
@@ -23,12 +23,14 @@
   <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.css"/>
   <link rel="stylesheet" type="text/css" href="styles/main.css"/>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
   <!-- Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -49,11 +51,11 @@
         `WebStorm ❤️`
       ];
 
-      $('.section:eq(1)').append(
+      $('.section.principles').append(
         shuffle(principles)
           .map(principle => `
             <div class="slide">
-              <div class="intro">
+              <div class="section-content">
                 <p>${principle}</p>
               </div>
             </div>
@@ -62,8 +64,8 @@
       );
 
       $('#fullpage').fullpage({
-        anchors: ['about', 'principles', 'portfolio', 'music', 'hobby', 'contact'],
-        sectionsColor: ['#fff', '#fff', '#333', '#ff5500', '#fff', '#fff'],
+        anchors: ['about', 'portfolio', 'music', 'hobby', 'principles', 'contacts'],
+        sectionsColor: ['#fff', '#333', '#ff5500', '#fff', '#fff', '#fff'],
         css3: true,
         navigation: true,
         menu: '.menu',
@@ -77,10 +79,10 @@
         controlArrows: false,
 
         onLeave: function (origin, destination) {
-          $('body').toggleClass('__black', destination === 3);
+          $('body').toggleClass('__black', destination === 2);
 
           switch (destination) {
-            case 2:
+            case 4:
             case 5:
             case 6:
               $('.menu').addClass('__black');
@@ -109,22 +111,23 @@
 
   <ul class="menu">
     <li data-menuanchor="about"><a href="#about">About</a></li>
-    <li data-menuanchor="principles"><a href="#principles">Principles</a></li>
     <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
     <li data-menuanchor="music"><a href="#music">Music</a></li>
     <li data-menuanchor="hobby"><a href="#hobby">Hobby</a></li>
-    <li data-menuanchor="contact"><a href="#contact">Contact me</a></li>
+    <li data-menuanchor="principles"><a href="#principles">Principles</a></li>
+    <li data-menuanchor="contacts"><a href="#contacts">Contacts</a></li>
   </ul>
 </nav>
 
 <article id="fullpage">
-  <div class="section">
+
+  <!-- About -->
+  <div class="section about">
     <div class="card">
       <div class="card-picture"></div>
       <div class="card-content">
         <p><b>Max Diachenko</b></p>
         <p>Most of the time I am a <b>software engineer</b>. In 2013 graduated from university with a master's degree in computer science.</p>
-        <!--<a class="link" href="https://upwork.com/fl/maxdiachenko" target="_blank">Codementor</a>-->
 
         <p>
           <span class="tag">javascript</span>
@@ -137,24 +140,18 @@
         </p>
       </div>
     </div>
+  </div>
 
-  </div>
-  <div class="section">
-    <div class="slide">
-      <h1 class="section-title">Principles</h1>
-      <div class="section-content">
-        <p>Here you can find my main principles (development, life, time management)</p>
-        <sub>Use arrows or swipe to browse principles</sub>
-      </div>
-    </div>
-  </div>
-  <div class="section __white">
-    <h1 class="section-title">TDB</h1>
+  <!-- Portfolio -->
+  <div class="section portfolio __white">
+    <h2 class="section-title">TDB</h2>
     <div class="section-content">
       <p>Projects will be added very soon</p>
     </div>
   </div>
-  <div class="section">
+
+  <!-- Music -->
+  <div class="section music">
     <div class="section-content">
       <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" style="box-shadow: 1px 3px 45px rgba(0, 0, 0, .4);" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1430041&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
       <a href="#about_miax" rel="modal:open" style="font-size: 16px; margin-top: 24px; color:#fff;">What is this?</a></p>
@@ -164,8 +161,10 @@
       </div>
     </div>
   </div>
-  <div class="section">
-    <h1 class="section-title">Hobby</h1>
+
+  <!-- Hobby -->
+  <div class="section hobby">
+    <h2 class="section-title">Hobby</h2>
     <div class="section-content">
       <table style="text-align: left;">
         <tr>
@@ -174,7 +173,7 @@
         </tr>
         <tr>
           <td>Youtube</td>
-          <td><a class="link" href="#youtube">MaxDiachenko</a></td>
+          <td><a class="link" target="_blank" href="https://youtube.com/c/MaxDiachenko">MaxDiachenko</a></td>
         </tr>
         <tr>
           <td>Telegram</td>
@@ -195,7 +194,20 @@
       </table>
     </div>
   </div>
-  <div class="section">
+
+  <!-- Principles -->
+  <div class="section principles">
+    <div class="slide">
+      <h2 class="section-title">Principles</h2>
+      <div class="section-content">
+        <p>Here you can find my main principles (development, life, time management)</p>
+        <sub>Use arrows or swipe to browse principles</sub>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contacts -->
+  <div class="section contacts">
     <div class="section-content">
       Skype: mdh-person
     </div>

@@ -100,10 +100,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #444; }
 
-h1 {
+h2 {
   font-size: 6em; }
   @media (max-width: 719px) {
-    h1 {
+    h2 {
       font-size: 3em; } }
 
 .wrap {
@@ -132,9 +132,9 @@ h1 {
         text-align: left; } }
   .section.__white {
     color: #fff !important; }
-  .section:nth-child(1) {
+  .section.about {
     background-image: url(../images/bg.png); }
-  .section:nth-child(4) {
+  .section.music {
     background-image: url(../images/bg-music.png); }
 
 @media (max-width: 719px) {

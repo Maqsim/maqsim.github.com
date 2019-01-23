@@ -10,7 +10,7 @@ body {
   color: $colorBlack;
 }
 
-h1 {
+h2 {
   font-size: 6em;
 
   @include mobile-only {
@@ -54,11 +54,11 @@ h1 {
     color: $colorWhite !important;
   }
 
-  &:nth-child(1) {
+  &.about {
     background-image: url(../images/bg.png);
   }
 
-  &:nth-child(4) {
+  &.music {
     background-image: url(../images/bg-music.png);
   }
 }
