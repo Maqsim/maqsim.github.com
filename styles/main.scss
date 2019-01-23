@@ -31,6 +31,11 @@ h1 {
 
   &-title {
     width: 100%;
+
+    @include mobile-only {
+      text-align: left;
+      margin-left: 10px;
+    }
   }
 
   &-content {
@@ -39,8 +44,9 @@ h1 {
     font-size: 1.5em;
 
     @include mobile-only {
-      width: calc(100% - 20px);
+      width: calc(100% - 30px);
       font-size: 1em;
+      text-align: left;
     }
   }
 
@@ -55,4 +61,18 @@ h1 {
   &:nth-child(4) {
     background-image: url(../images/bg-music.png);
   }
+}
+
+#fp-nav.right {
+  @include mobile-only {
+    right: -7px;
+  }
+}
+
+.__black #fp-nav ul li a span, .__black .fp-slidesNav ul li a span {
+  background: $colorWhite !important;
+}
+
+.__black .section {
+  color: $colorWhite !important;
 }

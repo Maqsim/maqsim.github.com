@@ -77,6 +77,8 @@
         controlArrows: false,
 
         onLeave: function (origin, destination) {
+          $('body').toggleClass('__black', destination === 3);
+
           switch (destination) {
             case 2:
             case 5:
@@ -133,18 +135,13 @@
           <span class="tag">mean</span>
           <span class="tag">ui/ux</span>
         </p>
-
-        <p>
-          <br>
-          Also take a look at my <a class="link" href="#hobby">hobby list</a> to see what I do more
-        </p>
       </div>
     </div>
 
   </div>
   <div class="section">
     <div class="slide">
-      <h1 class="section-title">My principles</h1>
+      <h1 class="section-title">Principles</h1>
       <div class="section-content">
         <p>Here you can find my main principles (development, life, time management)</p>
         <sub>Use arrows or swipe to browse principles</sub>
@@ -193,7 +190,7 @@
         </tr>
         <tr>
           <td>Game</td>
-          <td><a class="link" href="https://connect.unity.com/p/cat-armstrong" target="_blank">Moon Run</a> (ongoing)</td>
+          <td><a class="link" href="https://connect.unity.com/p/cat-armstrong" target="_blank">Moon Run</a></td>
         </tr>
       </table>
     </div>

@@ -8,6 +8,9 @@
   text-align: left;
   overflow: hidden;
   box-shadow: 1px 3px 45px rgba(0, 0, 0, 0.4); }
+  @media (max-width: 719px) {
+    .card {
+      width: calc(100% - 30px); } }
   .card-picture {
     background: url("../images/me.jpg") no-repeat center top;
     background-size: cover;
@@ -114,17 +117,32 @@ h1 {
   background-size: cover; }
   .section-title {
     width: 100%; }
+    @media (max-width: 719px) {
+      .section-title {
+        text-align: left;
+        margin-left: 10px; } }
   .section-content {
     width: 50%;
     margin: 0 auto;
     font-size: 1.5em; }
     @media (max-width: 719px) {
       .section-content {
-        width: calc(100% - 20px);
-        font-size: 1em; } }
+        width: calc(100% - 30px);
+        font-size: 1em;
+        text-align: left; } }
   .section.__white {
     color: #fff !important; }
   .section:nth-child(1) {
     background-image: url(../images/bg.png); }
   .section:nth-child(4) {
     background-image: url(../images/bg-music.png); }
+
+@media (max-width: 719px) {
+  #fp-nav.right {
+    right: -7px; } }
+
+.__black #fp-nav ul li a span, .__black .fp-slidesNav ul li a span {
+  background: #fff !important; }
+
+.__black .section {
+  color: #fff !important; }
