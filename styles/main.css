@@ -1,4 +1,4 @@
-@import url(page.css);
+@import url(reset.css);
 .card {
   display: inline-block;
   border-radius: 5px;
@@ -15,6 +15,15 @@
     height: 200px; }
   .card-content {
     padding: 10px; }
+  .card .tag {
+    display: inline-block;
+    background: #f0e8e4;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 3px 7px;
+    margin-top: 3px;
+    color: #444;
+    cursor: default; }
 
 a.link {
   color: #14bff4;
@@ -34,11 +43,88 @@ a.link {
   a.link:hover:before {
     width: 0; }
 
-.tag {
-  display: inline-block;
-  background: #f0e8e4;
-  border-radius: 3px;
-  font-size: 13px;
-  padding: 3px 7px;
-  margin-top: 3px;
-  color: #333; }
+.menu-container .logo {
+  position: fixed;
+  display: none;
+  z-index: 10; }
+  @media (max-width: 719px) {
+    .menu-container .logo {
+      display: block; } }
+
+.menu-container .burger {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10; }
+  @media (max-width: 719px) {
+    .menu-container .burger {
+      display: block; } }
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  z-index: 10;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); }
+  @media (max-width: 719px) {
+    .menu {
+      display: none; } }
+  .menu li {
+    display: inline-block;
+    margin: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; }
+  .menu li.active {
+    text-decoration: underline; }
+  .menu li a,
+  .menu li.active a {
+    padding: 9px 18px;
+    display: block;
+    color: #fff;
+    transition: color 300ms ease; }
+  .menu.__black {
+    text-shadow: none; }
+    .menu.__black li a {
+      color: #444; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #444; }
+
+h1 {
+  font-size: 6em; }
+  @media (max-width: 719px) {
+    h1 {
+      font-size: 3em; } }
+
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  position: relative; }
+
+.section {
+  text-align: center;
+  background-size: cover; }
+  .section-title {
+    width: 100%; }
+  .section-content {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.5em; }
+    @media (max-width: 719px) {
+      .section-content {
+        width: calc(100% - 20px);
+        font-size: 1em; } }
+  .section.__white {
+    color: #fff !important; }
+  .section:nth-child(1) {
+    background-image: url(../images/bg.png); }
+  .section:nth-child(4) {
+    background-image: url(../images/bg-music.png); }

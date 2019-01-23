@@ -39,7 +39,7 @@
         `WebStorm ❤️`
       ];
 
-      $('#section1').append(
+      $('.section:eq(1)').append(
         shuffle(principles)
           .map(principle => `
             <div class="slide">
@@ -56,7 +56,7 @@
         sectionsColor: ['#fff', '#fff', '#333', '#ff5500', '#fff', '#fff'],
         css3: true,
         navigation: true,
-        menu: '#menu',
+        menu: '.menu',
         scrollingSpeed: 700,
         showActiveTooltip: true,
         slidesNavigation: true,
@@ -71,10 +71,10 @@
             case 2:
             case 5:
             case 6:
-              $('#menu').addClass('__black');
+              $('.menu').addClass('__black');
               break;
             default:
-              $('#menu').removeClass('__black');
+              $('.menu').removeClass('__black');
           }
         }
       });
@@ -91,8 +91,11 @@
 </head>
 <body>
 
-<nav>
-  <ul id="menu">
+<nav class="menu-container">
+  <!--<div class="logo">MD</div>-->
+  <!--<div class="burger">=</div>-->
+
+  <ul class="menu">
     <li data-menuanchor="about"><a href="#about">About</a></li>
     <li data-menuanchor="principles"><a href="#principles">Principles</a></li>
     <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
@@ -103,7 +106,7 @@
 </nav>
 
 <article id="fullpage">
-  <div class="section " id="section0">
+  <div class="section">
     <div class="card">
       <div class="card-picture"></div>
       <div class="card-content">
@@ -125,43 +128,39 @@
           <br>
           Also take a look at my <a class="link" href="#hobby">hobby list</a> to see what I do more
         </p>
-
       </div>
     </div>
 
   </div>
-  <div class="section" id="section1">
+  <div class="section">
     <div class="slide">
-      <div class="intro">
-        <h1>My principles</h1>
+      <h1 class="section-title">My principles</h1>
+      <div class="section-content">
         <p>Here you can find my main principles (development, life, time management)</p>
         <sub>Use arrows or swipe to browse principles</sub>
       </div>
     </div>
   </div>
-  <div class="section" id="section2">
-    <div class="intro" style="color: white !important;">
-      <h1>TDB</h1>
+  <div class="section __white">
+    <h1 class="section-title">TDB</h1>
+    <div class="section-content">
       <p>Projects will be added very soon</p>
     </div>
   </div>
-  <div class="section" id="section3">
-    <div class="intro">
-      <p>
-        <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" style="box-shadow: 1px 3px 45px rgba(0, 0, 0, .4);" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1430041&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-      </p>
-
-      <p><a href="#about_miax" rel="modal:open" style="font-size: 16px; margin-top: 24px; color:#fff;">About Miax</a></p>
+  <div class="section">
+    <div class="section-content">
+      <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" style="box-shadow: 1px 3px 45px rgba(0, 0, 0, .4);" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1430041&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      <a href="#about_miax" rel="modal:open" style="font-size: 16px; margin-top: 24px; color:#fff;">What is this?</a></p>
 
       <div id="about_miax" class="modal">
         Miax – ukrainian indie musician. More info will be added soon
       </div>
     </div>
   </div>
-  <div class="section" id="section4">
-    <div class="intro">
-      <h1>Hobby</h1>
-      <table style="text-align: left; width: 285px; margin: 0 auto; font-size: 13px;">
+  <div class="section">
+    <h1 class="section-title">Hobby</h1>
+    <div class="section-content">
+      <table style="text-align: left;">
         <tr>
           <td>Musician</td>
           <td><a class="link" href="#music">Miax</a></td>
@@ -189,8 +188,8 @@
       </table>
     </div>
   </div>
-  <div class="section" id="section5">
-    <div class="intro">
+  <div class="section">
+    <div class="section-content">
       Skype: mdh-person
     </div>
   </div>

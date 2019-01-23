@@ -1,8 +1,10 @@
+@import "variables";
+
 .card {
   display: inline-block;
   border-radius: 5px;
   width: 350px;
-  background-color: #fff;
+  background-color: $colorWhite;
   font-size: 13px;
   text-align: left;
   overflow: hidden;
@@ -17,5 +19,16 @@
 
   &-content {
     padding: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #f0e8e4;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 3px 7px;
+    margin-top: 3px;
+    color: $colorBlack;
+    cursor: default;
   }
 }

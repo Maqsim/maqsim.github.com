@@ -1,38 +1,58 @@
+@import "reset.css";
+@import "mixins";
 @import "variables";
-@import "page.css";
 @import "card";
+@import "link";
+@import "menu";
 
-a.link {
-  color: $linkBlue;
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: $colorBlack;
+}
 
-  &:before {
-    background-color: $linkBlue;
-    content: '';
-    height: 1px;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: width 0.1s ease-in-out;
-    width: 100%;
-  }
+h1 {
+  font-size: 6em;
 
-  &:hover {
-    &:before {
-      width: 0;
-    }
+  @include mobile-only {
+    font-size: 3em;
   }
 }
 
-.tag {
-  display: inline-block;
-  background: #f0e8e4;
-  border-radius: 3px;
-  font-size: 13px;
-  padding: 3px 7px;
-  margin-top: 3px;
-  color: #333;
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  position: relative;
+}
+
+.section {
+  text-align: center;
+  background-size: cover;
+
+  &-title {
+    width: 100%;
+  }
+
+  &-content {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.5em;
+
+    @include mobile-only {
+      width: calc(100% - 20px);
+      font-size: 1em;
+    }
+  }
+
+  &.__white {
+    color: $colorWhite !important;
+  }
+
+  &:nth-child(1) {
+    background-image: url(../images/bg.png);
+  }
+
+  &:nth-child(4) {
+    background-image: url(../images/bg-music.png);
+  }
 }

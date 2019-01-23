@@ -1,0 +1,26 @@
+@import "variables";
+
+a.link {
+  color: $linkBlue;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+
+  &:before {
+    background-color: $linkBlue;
+    content: '';
+    height: 1px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.1s ease-in-out;
+    width: 100%;
+  }
+
+  &:hover {
+    &:before {
+      width: 0;
+    }
+  }
+}
