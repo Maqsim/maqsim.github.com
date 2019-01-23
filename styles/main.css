@@ -139,7 +139,7 @@ h1 {
 
 @media (max-width: 719px) {
   #fp-nav.right {
-    right: -7px; } }
+    right: 0px; } }
 
 .__black #fp-nav ul li a span, .__black .fp-slidesNav ul li a span {
   background: #fff !important; }
