@@ -2,25 +2,34 @@
 @import "mixins";
 
 .menu-container {
+  color: $colorWhite;
+  transition: color 300ms ease;
+
   .logo {
     position: fixed;
     display: none;
     z-index: 10;
+    width: 40px;
+    height: 40px;
+    left: 5px;
+    top: 5px;
+    background: url("../images/md-logo.svg");
+    background-size: 100% 100%;
 
     @include mobile-only {
       display: block;
     }
   }
 
-  .burger {
-    display: none;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 10;
+  &.__black {
+    color: $colorBlack !important;
 
-    @include mobile-only {
-      display: block;
+    .menu {
+      text-shadow: none !important;
+    }
+
+    li a {
+      color: $colorBlack !important;
     }
   }
 }
@@ -36,10 +45,6 @@
   margin: 0;
   text-align: center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-
-  @include mobile-only {
-    display: none;
-  }
 
   li {
     display: inline-block;
@@ -61,11 +66,24 @@
     transition: color 300ms ease;
   }
 
-  &.__black {
-    text-shadow: none;
+  @include mobile-only {
+    left: calc(-100% - 50px);
+    height: auto;
+    background: $colorWhite;
+    transition: left 200ms ease-out;
+    box-shadow: 0 10px 50px rgba(black, .5);
+
+    li {
+      text-shadow: none;
+      display: block;
+    }
 
     li a {
-      color: $colorBlack;
+      color: $colorBlack !important;
+    }
+
+    .burger.__opened + & {
+      left: 0;
     }
   }
 }

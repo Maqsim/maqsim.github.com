@@ -21,6 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <link rel="mask-icon" href="images/md-logo.svg" color="#00а0ff">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
@@ -37,77 +38,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      const principles = [
-        `I follow KISS principle everywhere it's possible`,
-        `My productivity hardly depends on how much interesting a project is`,
-        `I love develop fast and test just after`,
-        `I am open-minded`,
-        `The perfect is the enemy of the good`,
-        `I care about performance`,
-        `Don't interrupt me when I develop`,
-        `I hate offices. Maybe once...`,
-        `WebStorm ❤️`
-      ];
-
-      $('.section.principles').append(
-        shuffle(principles)
-          .map(principle => `
-            <div class="slide">
-              <div class="section-content">
-                <p>${principle}</p>
-              </div>
-            </div>
-          `)
-          .concat()
-      );
-
-      $('#fullpage').fullpage({
-        anchors: ['about', 'portfolio', 'music', 'hobby', 'principles', 'contacts'],
-        sectionsColor: ['#fff', '#333', '#ff5500', '#fff', '#fff', '#fff'],
-        css3: true,
-        navigation: true,
-        menu: '.menu',
-        scrollingSpeed: 700,
-        showActiveTooltip: true,
-        slidesNavigation: true,
-        loopTop: false,
-        loopBottom: false,
-        lazyLoading: false,
-        recordHistory: false,
-        controlArrows: false,
-
-        onLeave: function (origin, destination) {
-          $('body').toggleClass('__black', destination === 2);
-
-          switch (destination) {
-            case 4:
-            case 5:
-            case 6:
-              $('.menu').addClass('__black');
-              break;
-            default:
-              $('.menu').removeClass('__black');
-          }
-        }
-      });
-    });
-
-    function shuffle(a) {
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-  </script>
+  <script type="text/javascript" src="scripts/main.js"></script>
 </head>
 <body>
 
 <nav class="menu-container">
-  <!--<div class="logo">MD</div>-->
-  <!--<div class="burger">=</div>-->
+  <div class="logo"></div>
+  <div class="burger"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
 
   <ul class="menu">
     <li data-menuanchor="about"><a href="#about">About</a></li>
@@ -166,7 +103,7 @@
   <div class="section hobby">
     <h2 class="section-title">Hobby</h2>
     <div class="section-content">
-      <table style="text-align: left;">
+      <table style="text-align: left; font-size: 16px;">
         <tr>
           <td>Musician</td>
           <td><a class="link" href="#music">Miax</a></td>

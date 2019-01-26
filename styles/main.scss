@@ -1,6 +1,7 @@
 @import "reset.css";
 @import "mixins";
 @import "variables";
+@import "burger";
 @import "card";
 @import "link";
 @import "menu";
@@ -64,6 +65,8 @@ h2 {
 }
 
 #fp-nav.right {
+  z-index: 8;
+
   @include mobile-only {
     right: 0px;
   }
