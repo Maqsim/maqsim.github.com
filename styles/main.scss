@@ -79,3 +79,25 @@ h2 {
 .__black .section {
   color: $colorWhite !important;
 }
+
+.portfolio-table {
+
+  font-size: 13px;
+  border-collapse: separate;
+  border-spacing: 10px 2px;
+
+  &_date {
+    font-size: 11px;
+    text-align: right;
+  }
+
+  &_link {
+    text-align: left;
+  }
+
+  &_stack {
+    color: #aaa;
+    text-align: left;
+  }
+}
+

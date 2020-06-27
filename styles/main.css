@@ -197,3 +197,16 @@ h2 {
 
 .__black .section {
   color: #fff !important; }
+
+.portfolio-table {
+  font-size: 13px;
+  border-collapse: separate;
+  border-spacing: 10px 2px; }
+  .portfolio-table_date {
+    font-size: 11px;
+    text-align: right; }
+  .portfolio-table_link {
+    text-align: left; }
+  .portfolio-table_stack {
+    color: #aaa;
+    text-align: left; }

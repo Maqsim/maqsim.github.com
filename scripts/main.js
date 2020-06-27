@@ -24,8 +24,8 @@ $(document).ready(function () {
   );
 
   $('#fullpage').fullpage({
-    anchors: ['about', 'portfolio', 'music', 'hobby', 'principles', 'contacts'],
-    sectionsColor: ['#fff', '#333', '#ff5500', '#fff', '#fff', '#fff'],
+    anchors: ['about', 'portfolio', 'music', 'principles', 'contacts'],
+    sectionsColor: ['#fff', '#fff', '#ff5500', '#fff', '#fff', '#fff'],
     css3: true,
     navigation: true,
     menu: '.menu',
@@ -40,12 +40,11 @@ $(document).ready(function () {
 
     onLeave: function (origin, destination) {
       closeMenu();
-      $('body').toggleClass('__black', destination === 2);
 
       switch (destination) {
+        case 2:
         case 4:
         case 5:
-        case 6:
           $('.menu-container').addClass('__black');
           break;
         default:
