@@ -81,7 +81,6 @@ h2 {
 }
 
 .portfolio-table {
-
   font-size: 13px;
   border-collapse: separate;
   border-spacing: 10px 2px;
@@ -89,6 +88,7 @@ h2 {
   &_date {
     font-size: 11px;
     text-align: right;
+    white-space: nowrap;
   }
 
   &_link {
@@ -101,3 +101,12 @@ h2 {
   }
 }
 
+.close-modal {
+  transform: scale(.6) !important;
+  top: 0 !important;
+  right: 0 !important;
+}
+
+.modal {
+  border-radius: 2px !important;
+}

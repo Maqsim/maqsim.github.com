@@ -1,13 +1,12 @@
 $(document).ready(function () {
   const principles = [
-    `I follow KISS principle everywhere it's possible`,
-    `My productivity hardly depends on how much interesting a project is`,
-    `I love develop fast and test just after`,
+    `I follow KISS principle`,
+    `My productivity hardly depends on how much interesting project is`,
+    `I love learn and develop fast`,
     `I am open-minded`,
     `The perfect is the enemy of the good`,
     `I care about performance`,
-    `Don't interrupt me when I develop`,
-    `I hate offices. Maybe once...`,
+    `Remote work ❤️`,
     `WebStorm ❤️`
   ];
 

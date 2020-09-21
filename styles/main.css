@@ -204,9 +204,18 @@ h2 {
   border-spacing: 10px 2px; }
   .portfolio-table_date {
     font-size: 11px;
-    text-align: right; }
+    text-align: right;
+    white-space: nowrap; }
   .portfolio-table_link {
     text-align: left; }
   .portfolio-table_stack {
     color: #aaa;
     text-align: left; }
+
+.close-modal {
+  transform: scale(0.6) !important;
+  top: 0 !important;
+  right: 0 !important; }
+
+.modal {
+  border-radius: 2px !important; }
