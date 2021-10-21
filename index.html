@@ -23,9 +23,11 @@
   <link href="favicon.ico" rel="icon" type="image/x-icon"/>
   <link rel="mask-icon" href="images/md-logo.svg" color="#00а0ff">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/main.css"/>
 
   <script
@@ -34,172 +36,154 @@
     crossorigin="anonymous"></script>
 
   <!-- Modal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.min.js"></script>
   <script type="text/javascript" src="scripts/main.js"></script>
 </head>
-<body>
+<body class="p-8">
+<section>
+  <p class="font-semibold">Max Diachenko</p>
+  <p>Top-rated software engineer which is in love with UI/UX. Master in computer science.</p>
+  <p class="mt-1">
+    <a href="#" class="text-blue-400">#developer</a>
+    <a href="#" class="text-blue-400 ml-2">#mentor</a>
+    <a href="#" class="text-blue-400 ml-2">#investor</a>
+  </p>
+</section>
 
-<nav class="menu-container">
-  <div class="logo"></div>
-  <div class="burger"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+<section class="mt-8">
+  <p class="font-semibold mb-2">Links</p>
+  <p>
+    <a class="text-blue-400" target="_blank" href="https://www.youtube.com/c/MaxDiachenko">Youtube</a>
+    <a class="text-blue-400 ml-2" target="_blank" href="tg://resolve?domain=max_diachenko">Telegram</a>
+    <a class="text-blue-400 ml-2" target="_blank" href="https://www.instagram.com/max_diachenko_">Instagram</a>
+    <a class="text-blue-400 ml-2" target="_blank" href="https://stackoverflow.com/users/1453833/max">Stack Overflow</a>
+    <a class="text-blue-400 ml-2" target="_blank" href="https://github.com/Maqsim">GitHub</a>
+  </p>
+</section>
 
-  <ul class="menu">
-    <li data-menuanchor="about"><a href="#about">About</a></li>
-    <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
-    <li data-menuanchor="music"><a href="#music">Music</a></li>
-    <li data-menuanchor="principles"><a href="#principles">Principles</a></li>
-    <li data-menuanchor="contacts"><a href="#contacts">Contacts</a></li>
-  </ul>
-</nav>
-
-<article id="fullpage">
-
-  <!-- About -->
-  <div class="section about">
-    <div class="card">
-      <div class="card-picture"></div>
-      <div class="card-content">
-        <p style="margin-bottom: 4px;"><b>Max Diachenko</b></p>
-        <p>Top-rated software engineer which is in love with UI/UX. Master in computer science.</p>
-
-        <p>
-          <span class="tag">javascript</span>
-          <span class="tag">browser extensions</span>
-          <span class="tag">full-stack</span>
-          <span class="tag">web</span>
-          <span class="tag">unity3d</span>
-          <span class="tag">mean</span>
-          <span class="tag">ui/ux</span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio -->
-  <div class="section portfolio">
-    <table class="portfolio-table">
-      <tr>
-        <td class="portfolio-table_date"></td>
-        <td class="portfolio-table_link">Web Apps:</td>
-        <td class="portfolio-table_link"></td>
-        <td class="portfolio-table_stack"></td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2020 Apr</td>
-        <td class="portfolio-table_link"><a class="link" href="https://www.workhero.co">workhero.co</a></td>
-        <td class="portfolio-table_link">Gather recommendations from co-workers</td>
-        <td class="portfolio-table_stack">Front-end architect . ScalaJS, React, SCSS, UI/UX</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2019 Feb</td>
-        <td class="portfolio-table_link"><a class="link" href="">1brd.com</a></td>
-        <td class="portfolio-table_link">the digital employee referral program</td>
-        <td class="portfolio-table_stack">AngularJS, Angular, SCSS, UI/UX</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2017 Mar</td>
-        <td class="portfolio-table_link"><a class="link" href="https://www.tradecloud1.com/en/">tradecloud1.com</a></td>
-        <td class="portfolio-table_link">Supply Chain Platform for manufacturing</td>
-        <td class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2016 Nov</td>
-        <td class="portfolio-table_link"><a class="link" href="https://www.crunchbase.com/organization/ucourse#section-overview">ucourse.nl</a></td>
-        <td class="portfolio-table_link">Social learning platform for professional trainers</td>
-        <td class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2015 Sep</td>
-        <td class="portfolio-table_link"><a class="link" href="https://app.squads.com">squads.com</a></td>
-        <td class="portfolio-table_link">Hire Experienced, Scalable, Development Teams</td>
-        <td class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS), SCSS, UI/UX</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2014 Nov</td>
-        <td class="portfolio-table_link"><a class="link" href="https://www.crunchbase.com/organization/qwiksense">QwikSense</a></td>
-        <td class="portfolio-table_link">Allows companies to measure the quality of work environments</td>
-        <td class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2014 Jul</td>
-        <td class="portfolio-table_link"><a class="link" href="https://app.bridallive.com">bridallive.com</a></td>
-        <td class="portfolio-table_link">#1 Bridal Shop Software</td>
-        <td class="portfolio-table_stack">AngularJS, Less, Bootstrap, UI/UX</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2013 Jun</td>
-        <td class="portfolio-table_link"><a class="link" href="http://assignmentexpert.com">assignmentexpert.com</a></td>
-        <td class="portfolio-table_link">Assignment help from experts</td>
-        <td class="portfolio-table_stack">jQuery, PHP, CodeIgniter, MySQL, CSS</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2012 Jul</td>
-        <td class="portfolio-table_link"><a class="link" href="http://suggesters.co">suggesters.co</a></td>
-        <td class="portfolio-table_link">Smart Product Search</td>
-        <td class="portfolio-table_stack">jQuery, PHP, MySQL, CSS, Design</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date"></td>
-        <td class="portfolio-table_link" style="padding-top: 20px;">Other (hobby projects):</td>
-        <td class="portfolio-table_link"></td>
-        <td class="portfolio-table_stack"></td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2019 Oct</td>
-        <td class="portfolio-table_link"><a class="link" href="https://playly.app">Playly (MacOS app)</a></td>
-        <td class="portfolio-table_link">A new experience to control music</td>
-        <td class="portfolio-table_stack">Swift</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2019 Nov</td>
-        <td class="portfolio-table_link"><a class="link" href="http://valquiria.now.sh">valquiria.now.sh</a></td>
-        <td class="portfolio-table_link">[WIP] A CRM for drop shipping</td>
-        <td class="portfolio-table_stack">React, Relay, GraphQL, Apollo-server, NodeJS</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2018 Nov</td>
-        <td class="portfolio-table_link"><a class="link" href="https://connect.unity.com/p/cat-armstrong">Moon Run (2D game)</a></td>
-        <td class="portfolio-table_link">2D endless runner</td>
-        <td class="portfolio-table_stack">Unity3D, C#</td>
-      </tr>
-      <tr>
-        <td class="portfolio-table_date">2016 Jun</td>
-        <td class="portfolio-table_link"><a class="link" href="https://github.com/Maqsim/stackoverflow-app">StackOverflow App (MacOS)</a></td>
-        <td class="portfolio-table_link">StackOverflow MacOS client</td>
-        <td class="portfolio-table_stack">Electron, JavaScript</td>
-      </tr>
-    </table>
-
-  </div>
-
-  <!-- Music -->
-  <div class="section music">
-    <div class="section-content">
-      <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" style="box-shadow: 1px 3px 45px rgba(0, 0, 0, .4);" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1430041&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-      <a href="#about_miax" rel="modal:open" style="font-size: 16px; margin-top: 24px; color:#fff;">What is this?</a></p>
-
-      <div id="about_miax" class="modal">
-        Sometimes I produce electronic music as hobby
-      </div>
-    </div>
-  </div>
-
-  <!-- Principles -->
-  <div class="section principles">
-    <div class="slide">
-      <h2 class="section-title">Principles</h2>
-    </div>
-  </div>
-
-  <!-- Contacts -->
-  <div class="section contacts">
-    <div class="section-content">
-      Telegram: <a class="link" href="tg://resolve?domain=max_diachenko">@max_diachenko</a>
-    </div>
-  </div>
-</article>
+<section class="mt-8">
+  <p class="font-semibold">Projects</p>
+  <table class="portfolio-table">
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://www.workhero.co">workhero.co</a>
+        <div class="portfolio-table_date">2020 Apr</div>
+      </td>
+      <td>
+        Gather recommendations from co-workers
+        <div class="portfolio-table_stack">Front-end architect . ScalaJS, React, SCSS, UI/UX</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="">1brd.com</a>
+        <div class="portfolio-table_date">2019 Feb</div>
+      </td>
+      <td>
+        the digital employee referral program
+        <div class="portfolio-table_stack">AngularJS, Angular, SCSS, UI/UX</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://www.tradecloud1.com/en/">tradecloud1.com</a>
+        <div class="portfolio-table_date">2017 Mar</div>
+      </td>
+      <td>
+        Supply Chain Platform for manufacturing
+        <div class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://www.crunchbase.com/organization/ucourse#section-overview">ucourse.nl</a>
+        <div class="portfolio-table_date">2016 Nov</div>
+      </td>
+      <td>
+        Social learning platform for professional trainers
+        <div class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://app.squads.com">squads.com</a>
+        <div class="portfolio-table_date">2015 Sep</div>
+      </td>
+      <td>
+        Hire Experienced, Scalable, Development Teams
+        <div class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS), SCSS, UI/UX</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://www.crunchbase.com/organization/qwiksense">QwikSense</a>
+        <div class="portfolio-table_date">2014 Nov</div>
+      </td>
+      <td>
+        Allows companies to measure the quality of work environments
+        <div class="portfolio-table_stack">MEAN (MongoDB, Express, AngularJS, NodeJS)</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://app.bridallive.com">bridallive.com</a>
+        <div class="portfolio-table_date">2014 Jul</div>
+      </td>
+      <td>
+        #1 Bridal Shop Software
+        <div class="portfolio-table_stack">AngularJS, Less, Bootstrap, UI/UX</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="http://assignmentexpert.com">assignmentexpert.com</a>
+        <div class="portfolio-table_date">2013 Jun</div>
+      </td>
+      <td>
+        Assignment help from experts
+        <div class="portfolio-table_stack">jQuery, PHP, CodeIgniter, MySQL, CSS</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="http://suggesters.co">suggesters.co</a>
+        <div class="portfolio-table_date">2012 Jul</div>
+      </td>
+      <td>
+        Smart Product Search
+        <div class="portfolio-table_stack">jQuery, PHP, MySQL, CSS, Design</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="http://valquiria.now.sh">valquiria.now.sh</a>
+        <div class="portfolio-table_date">2019 Nov</div>
+      </td>
+      <td>
+        [WIP] A CRM for drop shipping
+        <div class="portfolio-table_stack">React, Relay, GraphQL, Apollo-server, NodeJS</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://connect.unity.com/p/cat-armstrong">Moon Run (2D game)</a>
+        <div class="portfolio-table_date">2018 Nov</div>
+      </td>
+      <td>
+        2D endless runner
+        <div class="portfolio-table_stack">Unity3D, C#</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://github.com/Maqsim/stackoverflow-app">StackOverflow App (MacOS)</a>
+        <div class="portfolio-table_date">2016 Jun</div>
+      </td>
+      <td>
+        StackOverflow MacOS client
+        <div class="portfolio-table_stack">Electron, JavaScript</div>
+      </td>
+    </tr>
+  </table>
+</section>
 </body>
 </html>

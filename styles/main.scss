@@ -1,83 +1,11 @@
-@import "reset.css";
 @import "mixins";
 @import "variables";
-@import "burger";
-@import "card";
-@import "link";
-@import "menu";
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   color: $colorBlack;
-}
-
-h2 {
-  font-size: 6em;
-
-  @include mobile-only {
-    font-size: 3em;
-  }
-}
-
-.wrap {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
-  position: relative;
-}
-
-.section {
-  text-align: center;
-  background-size: cover;
-
-  &-title {
-    width: 100%;
-
-    @include mobile-only {
-      text-align: left;
-      margin-left: 10px;
-    }
-  }
-
-  &-content {
-    width: 50%;
-    margin: 0 auto;
-    font-size: 1.5em;
-
-    @include mobile-only {
-      width: calc(100% - 30px);
-      font-size: 1em;
-      text-align: left;
-    }
-  }
-
-  &.__white {
-    color: $colorWhite !important;
-  }
-
-  &.about {
-    background-image: url(../images/bg.png);
-  }
-
-  &.music {
-    background-image: url(../images/bg-music.png);
-  }
-}
-
-#fp-nav.right {
-  z-index: 8;
-
-  @include mobile-only {
-    right: 0px;
-  }
-}
-
-.__black #fp-nav ul li a span, .__black .fp-slidesNav ul li a span {
-  background: $colorWhite !important;
-}
-
-.__black .section {
-  color: $colorWhite !important;
+  font-size: 14px;
+  max-width: 600px;
 }
 
 .portfolio-table {
@@ -86,13 +14,15 @@ h2 {
   border-spacing: 10px 2px;
 
   &_date {
+    vertical-align: top;
     font-size: 11px;
     text-align: right;
     white-space: nowrap;
   }
 
   &_link {
-    text-align: left;
+    vertical-align: top;
+    text-align: right;
   }
 
   &_stack {
@@ -101,12 +31,4 @@ h2 {
   }
 }
 
-.close-modal {
-  transform: scale(.6) !important;
-  top: 0 !important;
-  right: 0 !important;
-}
 
-.modal {
-  border-radius: 2px !important;
-}
