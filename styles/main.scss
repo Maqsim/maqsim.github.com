@@ -13,6 +13,10 @@ body {
   border-collapse: separate;
   border-spacing: 10px 2px;
 
+  td {
+    vertical-align: top;
+  }
+
   &_date {
     vertical-align: top;
     font-size: 11px;
@@ -21,8 +25,8 @@ body {
   }
 
   &_link {
-    vertical-align: top;
     text-align: right;
+    width: 170px;
   }
 
   &_stack {
@@ -31,4 +35,10 @@ body {
   }
 }
 
+.emoji {
+  position: absolute;
+  right: 100px;
+  font-size: 50px;
+  top: 20%;
+}
 
