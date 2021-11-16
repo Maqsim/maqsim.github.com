@@ -45,7 +45,7 @@
 <body class="p-4 sm:p-8">
 <section>
   <p class="font-semibold mb-2">Max Diachenko</p>
-  <p>Top-rated software engineer which is in love with UI/UX. Master in computer science.</p>
+  <p>Top-rated software engineer which is in love with UI/UX. Master’s degrees in Computer Science & IT.</p>
   <p class="mt-1">
     <a href="#" class="text-blue-400">#fullstackdeveloper</a>
     <a href="#" class="text-blue-400 ml-2">#uiux</a>
@@ -71,7 +71,7 @@
   <table class="portfolio-table">
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://www.workhero.co">workhero.co</a>
+        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event)">workhero.co</a>
         <div class="portfolio-table_date">2020 Apr</div>
       </td>
       <td>
@@ -81,18 +81,28 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="">1brd.com</a>
+        <a class="text-blue-400" target="_blank" href="https://firstbird.com">Firstbird</a>
         <div class="portfolio-table_date">2019 Feb</div>
       </td>
       <td>
         <span class="whitespace-nowrap text-green-500 font-semibold">[active]</span>
-        The digital employee referral program
+        The leading global employee referral platform for enterprise
         <div class="portfolio-table_stack">AngularJS, Angular, SCSS, UI/UX</div>
       </td>
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://www.tradecloud1.com/en/">tradecloud1.com</a>
+        <a class="text-blue-400" target="_blank" href="https://multicast-media.com">Multicast Media</a>
+        <div class="portfolio-table_date">2018 Jan</div>
+      </td>
+      <td>
+        The media processing company. Speech-to-text, text-to-speech. Audio/videograms
+        <div class="portfolio-table_stack">Angular, SCSS, UI/UX, NodeJS, ffmpeg, Microsoft STT+TTS API</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="https://www.tradecloud1.com/en/">Tradecloud</a>
         <div class="portfolio-table_date">2017 Mar</div>
       </td>
       <td>
@@ -102,7 +112,7 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://www.crunchbase.com/organization/ucourse#section-overview">ucourse.nl</a>
+        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event)">Ucourse</a>
         <div class="portfolio-table_date">2016 Nov</div>
       </td>
       <td>
@@ -122,7 +132,7 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://www.crunchbase.com/organization/qwiksense">QwikSense</a>
+        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event)">QwikSense</a>
         <div class="portfolio-table_date">2014 Nov</div>
       </td>
       <td>
@@ -132,7 +142,7 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://app.bridallive.com">bridallive.com</a>
+        <a class="text-blue-400" target="_blank" href="https://app.bridallive.com">Bridallive</a>
         <div class="portfolio-table_date">2014 Jul</div>
       </td>
       <td>
@@ -142,7 +152,7 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="http://assignmentexpert.com">assignmentexpert.com</a>
+        <a class="text-blue-400" target="_blank" href="http://assignmentexpert.com">AssignmentExpert</a>
         <div class="portfolio-table_date">2013 Jun</div>
       </td>
       <td>
@@ -229,8 +239,9 @@
         <div class="portfolio-table_date">2019 Nov</div>
       </td>
       <td>
-        A CRM for drop shipping (not finished)
-        <div class="portfolio-table_stack">React, Relay, GraphQL, Apollo-server, NodeJS</div>
+        <span class="whitespace-nowrap text-red-500 font-semibold" title="Impractical">[stopped]</span>
+        A CRM for drop shipping
+        <div class="portfolio-table_stack">React, NextJS, Relay, GraphQL, Apollo-server</div>
       </td>
     </tr>
     <tr>
@@ -239,16 +250,18 @@
         <div class="portfolio-table_date">2019 Oct</div>
       </td>
       <td>
+        <span class="whitespace-nowrap text-yellow-500 font-semibold">[starting soon]</span>
         MacOS toolbar app to control your music (Spotify, Apple Music)
         <div class="portfolio-table_stack">Swift</div>
       </td>
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://connect.unity.com/p/cat-armstrong">Moon Run (2D game)</a>
+        <a class="text-blue-400" href="#" onclick="unavailable(event)">Moon Run (2D game)</a>
         <div class="portfolio-table_date">2018 Nov</div>
       </td>
       <td>
+        <span class="whitespace-nowrap text-red-500 font-semibold" title="I wanted to play with Unity and there were too many work for side project">[stopped]</span>
         2D endless runner
         <div class="portfolio-table_stack">Unity3D, C#</div>
       </td>
@@ -259,11 +272,20 @@
         <div class="portfolio-table_date">2016 Jun</div>
       </td>
       <td>
+        <span class="whitespace-nowrap text-red-500 font-semibold" title="New version started">[stopped]</span>
         StackOverflow MacOS desktop application
         <div class="portfolio-table_stack">Electron, JavaScript</div>
       </td>
     </tr>
   </table>
 </section>
+
+<script>
+  function unavailable(e) {
+    e.preventDefault();
+
+    alert('The website became unavailable :(')
+  }
+</script>
 </body>
 </html>
