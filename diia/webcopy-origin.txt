@@ -1,0 +1,212 @@
+Uri: http://diya.cn85599.tmweb.ru/test/
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\index.htmll
+Content Type: text/html
+
+Uri: https://i.imgur.com/photo.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\photo.png
+Content Type: image/png
+
+Uri: https://i.imgur.com/signature.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\signature.png
+Content Type: image/png
+
+Uri: https://i.imgur.com/qrbig.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\qrbig.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/favicon.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\favicon.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/main.css?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\main.css
+Content Type: text/css
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/pro.min.css?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\pro.min.css
+Content Type: text/css
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/swiper-bundle.css?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\swiper-bundle.css
+Content Type: text/css
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/swiper-bundle.min.css?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\swiper-bundle.min.css
+Content Type: text/css
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/swiper-bundle.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\swiper-bundle.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/swiper-bundle.min.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\swiper-bundle.min.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/jquery.min.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\jquery.min.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/anime.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\anime.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/scroll-lock.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\scroll-lock.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/jquery.marquee.min.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\jquery.marquee.min.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/main.js?vфыф91ps9вф
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\main.js
+Content Type: application/x-javascript
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/e-Ukraine-Regular.woff
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\e-Ukraine-Regular.woff
+Content Type: application/font-woff
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/e-UkraineHead-Medium.woff
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\e-UkraineHead-Medium.woff
+Content Type: application/font-woff
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/arrow.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\arrow.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/1.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\1.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/2.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\2.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/3.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\3.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/4.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\4.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/5.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\5.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/6.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\6.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/7.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\7.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/8.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\8.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/9.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\9.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/10.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\10.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/11.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\11.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/copy.svg?12
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\copy.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/gerb.png?1
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\gerb.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/qr.svg?1
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\qr.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/diya.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\diya.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/docin.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\docin.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/ok.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\ok.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/docac.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\docac.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/posin.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\posin.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/posac.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\posac.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/notin.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\notin.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/notac.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\notac.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/menuin.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\menuin.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/menuac.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\menuac.svg
+Content Type: image/svg+xml
+
+Uri: https://i.imgur.com/long.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\long.png
+Content Type: image/png
+
+Uri: https://i.imgur.com/qr1.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\qr1.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/shtrihinc.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\shtrihinc.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/shtrihact.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\shtrihact.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/qrcodeact.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\qrcodeact.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/qrcodeinc.png
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\qrcodeinc.png
+Content Type: image/png
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/uasign.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\uasign.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/eblo.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\eblo.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/krest.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\krest.svg
+Content Type: image/svg+xml
+
+Uri: http://diya.cn85599.tmweb.ru/test/access/icons/3kita.svg
+File Name: C:\Downloaded Web Sites\diya.cn85599.tmweb.ru\test\access\icons\3kita.svg
+Content Type: image/svg+xml
+
