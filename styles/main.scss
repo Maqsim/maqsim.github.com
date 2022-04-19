@@ -1,15 +1,34 @@
 @import "mixins";
 @import "variables";
+@import url("./fonts/iA Writer Duospace/Webfonts/fonts.css");
+
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.eot") format("embedded-opentype"),
+  url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.woff2") format("woff2"),
+  url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.eot") format("embedded-opentype"),
+  url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.woff2") format("woff2"),
+  url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.woff") format("woff");
+}
 
 body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'iA Writer Quattro', monospace;
   color: $colorBlack;
-  font-size: 14px;
+  font-size: 15px;
   max-width: 600px;
 }
 
 .portfolio-table {
-  font-size: 13px;
+  font-size: 14px;
   border-collapse: separate;
   border-spacing: 10px 2px;
 
@@ -19,7 +38,7 @@ body {
 
   &_date {
     vertical-align: top;
-    font-size: 11px;
+    font-size: 12px;
     text-align: right;
     white-space: nowrap;
   }

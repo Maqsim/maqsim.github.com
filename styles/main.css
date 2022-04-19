@@ -1,29 +1,51 @@
+@import url("./fonts/iA Writer Duospace/Webfonts/fonts.css");
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.eot") format("embedded-opentype"), url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.woff2") format("woff2"), url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.eot") format("embedded-opentype"), url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.woff2") format("woff2"), url("fonts/iA Writer Quattro/Webfonts/iAWriterQuattroS-Bold.woff") format("woff");
+}
 body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "iA Writer Quattro", monospace;
   color: #444;
-  font-size: 14px;
-  max-width: 600px; }
+  font-size: 15px;
+  max-width: 600px;
+}
 
 .portfolio-table {
-  font-size: 13px;
+  font-size: 14px;
   border-collapse: separate;
-  border-spacing: 10px 2px; }
-  .portfolio-table td {
-    vertical-align: top; }
-  .portfolio-table_date {
-    vertical-align: top;
-    font-size: 11px;
-    text-align: right;
-    white-space: nowrap; }
-  .portfolio-table_link {
-    text-align: right;
-    width: 170px; }
-  .portfolio-table_stack {
-    color: #aaa;
-    text-align: left; }
+  border-spacing: 10px 2px;
+}
+.portfolio-table td {
+  vertical-align: top;
+}
+.portfolio-table_date {
+  vertical-align: top;
+  font-size: 12px;
+  text-align: right;
+  white-space: nowrap;
+}
+.portfolio-table_link {
+  text-align: right;
+  width: 170px;
+}
+.portfolio-table_stack {
+  color: #aaa;
+  text-align: left;
+}
 
 .emoji {
   position: absolute;
   right: 100px;
   font-size: 50px;
-  top: 20%; }
+  top: 20%;
+}
+
+/*# sourceMappingURL=main.css.map */
