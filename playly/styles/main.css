@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+}
+.header_logo {
+  font-size: 40px;
+  font-weight: bold;
+  padding: 30px 0;
+}
+.header_menu_item {
+  float: left;
+  padding: 30px 20px;
+}
+.header_menu_item a {
+  text-decoration: none;
+  color: #000;
+}
+
+.main-container {
+  text-align: center;
+}
+.main-container_heading {
+  font-size: 30px;
+  padding: 40px 0;
+}
+.main-container_image {
+  border-radius: 5px;
+  box-shadow: 0 5px 50px rgba(34, 10, 105, 0.7);
+}
+.main-container_cta {
+  padding: 40px 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.btn {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 140px;
+  padding: 15px 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+  background-color: #443b55;
+  fill: #fff;
+}
+.btn_bottom-line {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "PT Sans", sans-serif;
+  color: #333;
+  height: 100%;
+  background: linear-gradient(to bottom, #fff, #C6B6F8) no-repeat fixed;
+}
+
+/*# sourceMappingURL=main.css.map */

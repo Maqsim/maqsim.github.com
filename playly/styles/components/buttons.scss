@@ -1,0 +1,25 @@
+.btn {
+  font-weight: bold;
+
+  display: inline-block;
+
+  min-width: 140px;
+  padding: 15px 20px;
+
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  color: rgba(#fff, .8);
+  border: none;
+  border-radius: 5px;
+  background-color: #443b55;
+
+  fill: #fff;
+
+  &_bottom-line {
+    font-size: 13px;
+
+    margin-top: 10px;
+  }
+}
