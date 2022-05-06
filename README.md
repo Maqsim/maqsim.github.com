@@ -2,7 +2,7 @@
 
 #### I'm a Full-stack developer from Kyiv, Ukraine.
 
-- 🧔‍♂️ I'm 29
+- 🧔‍♂️ I'm 30
 - 👶 Touched programming at 13
 - 🎓 Master's degree in computer science 
 - 👨‍💻 I work at **Squads**
