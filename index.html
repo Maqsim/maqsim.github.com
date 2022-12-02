@@ -84,6 +84,16 @@
   <table class="portfolio-table">
     <tr>
       <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event, 'This app is internal, no public access')">BL Vendor Portal</a>
+        <div class="portfolio-table_date">2022 Dec</div>
+      </td>
+      <td>
+        Vendor portal for BridalLive
+        <div class="portfolio-table_stack">Svelte, Tailwind CSS</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="portfolio-table_link">
         <a class="text-blue-400" target="_blank" href="https://www.jiggr.co">jiggr.co</a>
         <div class="portfolio-table_date">2022 Oct</div>
       </td>
@@ -321,10 +331,10 @@
 </section>
 
 <script>
-  function unavailable(e) {
+  function unavailable(e, customMessage = '') {
     e.preventDefault();
 
-    alert('The website became unavailable :(');
+    alert(customMessage || 'The website became unavailable :(');
   }
 </script>
 </body>
