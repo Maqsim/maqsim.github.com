@@ -45,7 +45,7 @@
 
   <script type="text/javascript" src="scripts/main.js"></script>
 </head>
-<body class="p-4 pt-8 sm:p-8">
+<body class="p-4 pt-8 sm:p-8 pb-14">
 <section class="fixed z-10 top-0 left-0 w-full bg-red-500 text-white px-4 sm:px-8 py-2 font-semibold">
   Русский военный корабль, иди нахуй!
 </section>
@@ -84,10 +84,11 @@
   <table class="portfolio-table">
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event, 'This app is internal, no public access')">BL Vendor Portal</a>
+        <a class="text-blue-400" target="_blank" href="#" onclick="unavailable(event, 'This app is internal, no public access')">BridalLive Vendor Portal</a>
         <div class="portfolio-table_date">2022 Dec</div>
       </td>
       <td>
+        <span class="whitespace-nowrap text-green-500 font-semibold">[active]</span>
         Vendor portal for BridalLive
         <div class="portfolio-table_stack">Svelte, Tailwind CSS</div>
       </td>
@@ -176,7 +177,7 @@
     </tr>
     <tr>
       <td class="portfolio-table_link">
-        <a class="text-blue-400" target="_blank" href="https://app.bridallive.com">Bridallive</a>
+        <a class="text-blue-400" target="_blank" href="https://app.bridallive.com">BridalLive</a>
         <div class="portfolio-table_date">2014 Jul</div>
       </td>
       <td>
@@ -208,8 +209,18 @@
 </section>
 
 <section class="mt-8">
-  <p class="font-semibold mb-2">Browser Extensions</p>
+  <p class="font-semibold mb-2">Browser Extensions/Add-ons</p>
   <table class="portfolio-table">
+    <tr>
+      <td class="portfolio-table_link">
+        <a class="text-blue-400" target="_blank" href="/youtube-time-code-jumper">YouTube Time Code Jumper</a>
+        <div class="portfolio-table_date">2023 Mar</div>
+      </td>
+      <td>
+        A browser extension that helps to jump back to a comment which you clicked a time code from
+        <div class="portfolio-table_stack">Chrome/Safari extension</div>
+      </td>
+    </tr>
     <tr>
       <td class="portfolio-table_link">
         <a class="text-blue-400" target="_blank" href="https://www.upwork.com/freelancers/~0147fb2b6adfba2d63">Hulu Random Episode</a>
@@ -217,7 +228,7 @@
       </td>
       <td>
         Randomly picks an episode in a season of specific show
-        <div class="portfolio-table_stack">Chrome extension, HTML, CSS, JavaScript</div>
+        <div class="portfolio-table_stack">Chrome extension</div>
       </td>
     </tr>
     <tr>
@@ -227,7 +238,7 @@
       </td>
       <td>
         ~130 lines of code. No jQuery. No select2
-        <div class="portfolio-table_stack">Chrome extension, HTML, CSS, JavaScript</div>
+        <div class="portfolio-table_stack">Chrome extension</div>
       </td>
     </tr>
     <tr>
@@ -237,7 +248,7 @@
       </td>
       <td>
         Learning a language can be tough, but Languica makes it simple by tutoring you while you binge watch your favorite shows on Netflix.
-        <div class="portfolio-table_stack">Chrome/Firefox/Edge extension, HTML, CSS, JavaScript</div>
+        <div class="portfolio-table_stack">Chrome/Firefox/Edge extension</div>
       </td>
     </tr>
     <tr>
@@ -246,8 +257,8 @@
         <div class="portfolio-table_date">2018 Jan</div>
       </td>
       <td>
-        From <a class="text-blue-400" href="https://www.upwork.com/att/download/portfolio/persons/uid/424334959684206592/profile/projects/files/951809200190124032" target="_blank">this</a> to <a class="text-blue-400" href="https://www.upwork.com/att/download/portfolio/persons/uid/424334959684206592/profile/projects/files/951809386383667200" target="_blank">this</a> via chrome extension
-        <div class="portfolio-table_stack">Chrome extension, HTML, CSS, JavaScript</div>
+        Website prettier. From <a class="text-blue-400" href="https://www.upwork.com/att/download/portfolio/persons/uid/424334959684206592/profile/projects/files/951809200190124032" target="_blank">this</a> to <a class="text-blue-400" href="https://www.upwork.com/att/download/portfolio/persons/uid/424334959684206592/profile/projects/files/951809386383667200" target="_blank">this</a> via chrome extension
+        <div class="portfolio-table_stack">Chrome extension</div>
       </td>
     </tr>
   </table>
@@ -259,10 +270,9 @@
     <tr>
       <td class="portfolio-table_link">
         <a class="text-blue-400" target="_blank" href="/єкудисходити">єКудиСходити</a>
-        <div class="portfolio-table_date">2022 March</div>
+        <div class="portfolio-table_date">2022 Mar</div>
       </td>
       <td>
-        <span class="whitespace-nowrap text-green-500 font-semibold">[active]</span>
         An iOS/Android app for finding an opened place in Kyiv during the war actions.
         <div class="portfolio-table_stack">React-native (Expo), Firebase</div>
       </td>
@@ -273,7 +283,6 @@
         <div class="portfolio-table_date">2021 Nov</div>
       </td>
       <td>
-        <span class="whitespace-nowrap text-green-500 font-semibold">[active]</span>
         StackOverflow MacOS desktop application (v2)
         <div class="portfolio-table_stack">Electron, React</div>
       </td>
@@ -295,7 +304,6 @@
         <div class="portfolio-table_date">2019 Oct</div>
       </td>
       <td>
-        <span class="whitespace-nowrap text-green-500 font-semibold">[active]</span>
         MacOS menu bar app to control your music (Spotify, Apple Music)
         <div class="portfolio-table_stack">Swift</div>
       </td>
@@ -323,11 +331,6 @@
       </td>
     </tr>
   </table>
-</section>
-
-<section class="mt-8">
-  <p class="font-semibold mb-2">Music (old)</p>
-  <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/335855401&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/miax_official" title="Miax" target="_blank" style="color: #cccccc; text-decoration: none;">Miax</a> · <a href="https://soundcloud.com/miax_official/sets/not-finished-tracks-wip" title="Music" target="_blank" style="color: #cccccc; text-decoration: none;">Music</a></div>
 </section>
 
 <script>
