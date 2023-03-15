@@ -27,7 +27,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../styles/main.css"/>
 
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -35,28 +34,38 @@
     crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="scripts/main.js"></script>
+
+  <style>
+    html, body {
+      height: 100vh;
+      font-family: Verdana, sans-serif;
+      text-align: center;
+    }
+
+    body {
+      background: linear-gradient(#fff, rgba(167, 0, 0, 0.57));
+      background-attachment: fixed;
+    }
+  </style>
 </head>
-<body class="p-4 sm:p-8">
+<body class="p-4 sm:p-8" style="display: flex;flex-direction: column; align-items: center;">
+<img src="icon.png" alt="" width="64">
 
-<section class="mt-6 flex">
-  <div class="mr-6 flex-shrink-0">
-    <img src="./icon.png" alt="" class="rounded" width="64">
-  </div>
-  <div class="">
-    <p class="font-semibold mb-2">YouTube Time Code Jumper</p>
-    <p>A browser extension that helps to jump back to a comment which you clicked a time code from</p>
+<h2 style="font-size: 20px; font-weight: bold; margin-block: 5px">Time Code Jumper for YouTube</h2>
+<p style="width: 100%; max-width: 350px; font-size: 13px; line-height: 1.4em;">
+  A browser extension that helps to jump back to a comment which you clicked a time code from
+</p>
 
-    <section class="mt-8">
-      <div class="flex gap-4">
-        <a href="https://apps.apple.com/app/єкудисходити/id1617155416" target="_blank">
-          <img src="./apple.svg" style="height: 48px;" alt="">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.max_diachenko.EKS" target="_blank">
-          <img src="./chrome.png" style="height: 48px;" alt="">
-        </a>
-      </div>
-    </section>
-  </div>
-</section>
+<div style="display: flex; flex-direction: row; align-items: flex-start; gap: 15px; margin-block: 30px">
+  <a href="https://apps.apple.com/app/time-code-jumper-for-youtube/id6446318119" target="_blank">
+    <img src="./apple.svg" style="height: 48px;" alt="">
+  </a>
+  <a href="#" target="_blank">
+    <img src="./chrome.png" style="height: 48px;" alt="">
+  </a>
+</div>
+<video width="800" name="Demo" autoplay loop class="rounded-md shadow-2xl mt-10">
+  <source src="demo.mov">
+</video>
 </body>
 </html>
